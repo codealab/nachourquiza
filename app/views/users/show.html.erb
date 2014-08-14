@@ -1,0 +1,66 @@
+<% provide(:title, "#{@user.name}") %>
+<div class="boton_der">
+	<div class="top_buttons">
+		<%= link_to root_path do %>
+		<p><button type="button" class="btn btn-info">Home</button></p>
+		<% end %>
+		<%= link_factory( :_path => users_path, :_class=>'btn btn-default', :_button => true, :_text=>'Todos los Usuarios' ) %>
+	</div>
+	<h1><%= @user.name %><span class="line"></span></h1>
+</div>
+<div class="all_width light_box">
+	<div class="col-md-4">
+		<h4>Perfil</h4>
+		<div class="under_pressure"></div>
+		<div class="all_width blue_box">
+			<div class="white_box">
+				<div class="text_center">
+					<% if @user.photo_url.include?('/default/') %>
+						<%= image_tag @user.photo_url.to_s, id: 'image_url' %>
+					<% else %>
+						<%= image_tag @user.photo_url(:thumb).to_s, :class => "profile_thumb" %>
+					<% end %>
+					<div class="spacer"></div>
+				</div>
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<th>Nombre</th>
+							<td><%= @user.name %></td>
+						</tr>
+						<tr>
+							<th>Email</th>
+							<td><%= @user.email %></td>
+						</tr>
+						<tr>
+							<th>Roles</th>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<% if @user.admin %>
+							<td>Administrador</td>
+							<% else %>
+							<td></td>
+							<% end %>
+						</tr>
+						<% if @user.coordinator %>
+						<tr>
+							<td></td>
+							<td>Coordinador</td>
+						</tr>
+						<% end %>
+						<tr>
+							<td></td>
+							<% if @user.instructor %>
+							<td>Instructor</td>
+							<% else %>
+							<td></td>
+							<% end %>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
