@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require jquery.Jcrop
 //= require bootstrap
-//= require bootstrap-wysihtml5
 //= require_tree .
 
 (function($) {
