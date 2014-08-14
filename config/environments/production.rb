@@ -1,4 +1,4 @@
-Spoleta::Application.configure do
+Nachourquiza::Application.configure do
 
   config.cache_classes = true
   config.eager_load = true
