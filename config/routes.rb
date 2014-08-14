@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   resources :users
   resources :spots
+  resources :sessions
 
   match '/user',    to: 'users#show',           via: 'get'
   match '/edit',    to: 'users#edit',           via: 'get'
