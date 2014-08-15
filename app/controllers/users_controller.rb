@@ -1,7 +1,8 @@
 # encoding: UTF-8
 class UsersController < ApplicationController
 
-  load_and_authorize_resource
+  # load_and_authorize_resource
+  skip_before_action :require_login, only: [ :new, :create ]
 
   def index
     @users = User.all
@@ -17,12 +18,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.student = true
     if @user.save
       if params[:user][:photo].present?
         render :crop
       else
         flash[:success] = "Usuario creado exitosamente"
-        redirect_to users_path
+        sign_in @user
+        redirect_to user_path(@user)
       end
     else
       render 'new'

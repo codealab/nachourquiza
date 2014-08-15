@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class SessionsController < ApplicationController
+  
   skip_before_action :require_login, only: [:new, :create]
   
   def new
@@ -8,8 +9,8 @@ class SessionsController < ApplicationController
   def create
   	user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      flash.now[:success] = 'Bienvenido a "De Cero a Tres"'
-      redirect_to root_url
+      flash.now[:success] = 'Bienvenido a "Nacho Urquiza"'
+      redirect_to user_path(user)
       sign_in user
     else
       flash.now[:danger] = 'Combinación de email/password errónea.'
@@ -32,7 +33,6 @@ class SessionsController < ApplicationController
       flash[:danger] = "La contraseña actual"
     end
   end 
-
 
   def destroy
     sign_out

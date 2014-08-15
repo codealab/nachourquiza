@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: de0atres_development
+  database: nacho_urquiza_development
   pool: 5
   username: postgres
   password: 123qwe123
@@ -9,7 +9,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: de0atres_test
+  database: nacho_urquiza_test
   pool: 5
   username: postgres
   password: 123qwe123
@@ -17,5 +17,5 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: de0atres_production
+  database: nacho_urquiza_production
   pool: 5

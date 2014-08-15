@@ -4,10 +4,12 @@ require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
+
 Bundler.require(*Rails.groups)
 
 module Nachourquiza
   class Application < Rails::Application
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -17,9 +19,15 @@ module Nachourquiza
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+
     config.time_zone = 'Guadalajara'
     config.i18n.default_locale = :es
     config.assets.initialize_on_precompile = false
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+
+    config.generators do |g|
+        g.factory_girl false
+    end
+
   end
 end

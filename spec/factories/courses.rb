@@ -1,7 +1,7 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+# encoding: UTF-8
 
 FactoryGirl.define do
   factory :course do
-    name "MyString"
+    name "Taller 1"
   end
 end

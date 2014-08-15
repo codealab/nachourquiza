@@ -9,13 +9,12 @@
 			<%= f.label :password, :for => "session_password" %>
 			<%= f.password_field :password, { :class => "form-control" } %>
 			<br>
-	      	<%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-
+			<%= link_to "¿Olvidaste tu contraseña?" %>
+	      	<%= f.submit "Iniciar sesión", class: "btn btn-large btn-primary" %>
 		<% end %>
+		¿Eres nuevo? <%= link_to 'Regístrate', new_user_path %>
 	</div>
 <% else %>
 	<% provide(:title, "#{current_user.name}") %>
-	<div>
-		<h2><%= "#{current_user.name} is logged-in"%></h2>
-	</div>
+	<h2><%= "#{current_user.name} is logged-in"%></h2>
 <% end %>

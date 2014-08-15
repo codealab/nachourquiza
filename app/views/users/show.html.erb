@@ -1,13 +1,6 @@
 <% provide(:title, "#{@user.name}") %>
-<div class="boton_der">
-	<div class="top_buttons">
-		<%= link_to root_path do %>
-		<p><button type="button" class="btn btn-info">Home</button></p>
-		<% end %>
-		<%= link_factory( :_path => users_path, :_class=>'btn btn-default', :_button => true, :_text=>'Todos los Usuarios' ) %>
-	</div>
-	<h1><%= @user.name %><span class="line"></span></h1>
-</div>
+<h1><%= @user.name %><span class="line"></span></h1>
+
 <div class="all_width light_box">
 	<div class="col-md-4">
 		<h4>Perfil</h4>
@@ -44,16 +37,16 @@
 							<td></td>
 							<% end %>
 						</tr>
-						<% if @user.coordinator %>
+						<% if @user.student %>
 						<tr>
 							<td></td>
-							<td>Coordinador</td>
+							<td>Estudiante</td>
 						</tr>
 						<% end %>
 						<tr>
 							<td></td>
-							<% if @user.instructor %>
-							<td>Instructor</td>
+							<% if @user.teacher %>
+							<td>Profesor</td>
 							<% else %>
 							<td></td>
 							<% end %>

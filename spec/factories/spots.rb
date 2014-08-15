@@ -1,8 +1,8 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+# encoding: UTF-8
 
 FactoryGirl.define do
   factory :spot do
-    student_id 1
-    group_id 1
+    student_id create(:user, :student)
+    group { create(:group) }
   end
 end

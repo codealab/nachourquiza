@@ -1,7 +1,7 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+# encoding: UTF-8
 
 FactoryGirl.define do
   factory :concept do
-    name "MyString"
+    name "Inscripción"
   end
 end

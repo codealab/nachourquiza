@@ -31,7 +31,7 @@
                     console.log(evt);
                     var files = evt.target.files;
                     if (files.length == 0) {
-                        $("#photo_thumb").attr('src', "/assets/default.png");
+                        $("#image_url").attr('src', "/assets/default.png");
                     } else {
                         for (var i = 0, f; f = files[i]; i++) {
                             if (!f.type.match('image.*')) continue;
@@ -39,7 +39,7 @@
                             reader.onload = (function(theFile) {
                                 return function(e) {
                                     console.log(e);
-                                    $("#photo_thumb").attr('src', e.target.result);
+                                    $("#image_url").attr('src', e.target.result);
                                 };
                             })(f);
                             reader.readAsDataURL(f);
@@ -54,7 +54,6 @@
 
 function init() {
     $("#user_photo").imagePreview();
-    posts();
 }
 
 $(document).ready(init);

@@ -1,14 +1,19 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+# encoding: UTF-8
 
 FactoryGirl.define do
   factory :user do
-    name "MyString"
-    email "MyString"
-    password_digest "MyString"
-    admin false
-    student false
-    teacher false
-    remember_token "MyString"
-    photo "MyString"
+    sequence(:name)  { |n| "Person #{n}" }
+    sequence(:email) { |n| "person_#{n}@example.com" }
+    password "foobar"
+    password_confirmation "foobar"
+    trait :is_admin do
+        admin true
+    end
+    trait :is_teacher do
+        teacher true
+    end
+    trait :is_student do
+        student true
+    end
   end
 end

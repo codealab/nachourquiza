@@ -1,4 +1,4 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+# encoding: UTF-8
 
 FactoryGirl.define do
   factory :unit do
