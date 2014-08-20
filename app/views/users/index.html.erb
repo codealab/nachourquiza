@@ -1,0 +1,54 @@
+<% provide(:title, 'Todos los Usuarios') %>
+
+<div class="boton_der">
+	<% if current_user.admin? %>
+		<div class="top_buttons">
+			<%= link_factory( :_path => new_user_path, :_text=> 'Nuevo Usuario', :_button=> true, :_class=> 'btn btn-default' ) %>
+		</div>
+	<% end %>
+	<h1>Todos los Usuarios<span class="line"></span></h1>
+</div>
+<div class="all_width blue_box">
+	<table class="table table-striped tablesorter">
+		<thead>
+			<tr>
+				<th>Usuario</th>
+				<th>Email</th>
+				<th>Administrador</th>
+				<th>Instructor</th>
+				<th>Coordinador</th>
+				<% if current_user.admin? %>
+					<th>Editar</th>
+					<th>Eliminar</th>
+				<% end %>
+			</tr>
+		</thead>
+		<tbody>
+			<% @users.each do |user| %>
+			<tr>
+				<td><%= link_to user.name, user %></td>
+				<td><%= user.email %></td>
+				<% if user.admin %><td>Sí</td><% else %><td>No</td><% end %>
+				<% if user.student %><td>Sí</td><% else %><td>No</td><% end %>
+				<% if user.teacher %><td>Sí</td><% else %><td>No</td><% end %>
+				<% if current_user.admin? %>
+					<th>
+						<%= link_factory( :_path => edit_user_path(user), :_text=> 'Editar', :_button=> true, :_class=> 'btn btn-default btn-xs' ) %>
+					</th>
+					<% if !current_user?(user) %>
+						<th>
+							<%= link_factory( :_path => user_path(user), :_text=> 'Eliminar', :_button=> true, :_class=> 'btn btn-danger btn-xs', :_alert=> "¿Estás seguro de borrar a #{user.name}?", :_destroy=>true ) %>
+						</th>
+					<% else %>
+						<th>
+							<a href="#">
+								<p><button type="button" class="btn btn-danger btn-xs disabled">Borrar</button></p>
+							</a>
+						</th>
+					<% end %>
+				<% end %>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

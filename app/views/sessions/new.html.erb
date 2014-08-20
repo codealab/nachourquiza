@@ -1,0 +1,20 @@
+<% unless signed_in? %>
+	<% provide(:title, "Iniciar Sesión") %>
+	<div class="col-md-4 col-md-offset-4">
+	    <%= form_for(:session, url: sessions_path) do |f| %>
+
+			<%= f.label :email %>
+			<%= f.text_field :email, { :class => "form-control" } %>
+
+			<%= f.label :password, :for => "session_password" %>
+			<%= f.password_field :password, { :class => "form-control" } %>
+			<br>
+			<%= link_to "¿Olvidaste tu contraseña?" %>
+	      	<%= f.submit "Iniciar sesión", class: "btn btn-large btn-primary" %>
+		<% end %>
+		¿Eres nuevo? <%= link_to 'Regístrate', new_user_path %>
+	</div>
+<% else %>
+	<% provide(:title, "#{current_user.name}") %>
+	<h2><%= "#{current_user.name} is logged-in"%></h2>
+<% end %>

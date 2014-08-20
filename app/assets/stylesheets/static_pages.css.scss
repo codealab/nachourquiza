@@ -1,0 +1,18 @@
+// Place all the styles related to the Static_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#login_home{ background-color: #ffffff; }
+#login_home .entry-header{
+	position: relative;
+	top: 20px;
+}
+#login_home .entry-meta{ margin-top: 20px; }
+#session_password{
+	width: 60%;
+	float: left;
+}
+#sign_in_button{
+	display: inline;
+	margin-left: 10px;
+	width: 36%;
+}

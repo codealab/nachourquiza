@@ -39,7 +39,7 @@ end
 
 gem "tzinfo-data", platforms: [:mingw, :mswin]
 
-gem "bcrypt-ruby", "~> 3.0.0"
+gem 'bcrypt-ruby', '3.1.2'
 
 group :production do
 	gem "fog"

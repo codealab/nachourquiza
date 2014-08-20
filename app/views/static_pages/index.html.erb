@@ -1,0 +1,55 @@
+<% provide(:title, "Iniciar Sesión") %>
+<div class="section row entries bg-primary section-no-margin-bottom">
+	<div class="col-lg-8 col-xl-5">
+		<div class="row">
+			<article class="entry style-grid style-hero hero-md-largest type-post col-md-8 col-lg-12 colheight-sm-1 colheight-md-2 colheight-lg-2 colheight-xl-2">
+				
+				<div class="ribbon ribbon-pulled ribbon-small ribbon-highlight">
+					<a href="blog.html">Bienvenido a Studio Urquiza</a>
+				</div>
+				<header class="entry-header">
+					<h3 class="entry-title">De la Vista Nace el Antojo</h3>
+					<div class="entry-meta">
+						<span class="entry-date">
+						<p>30 años de carrera se traducen en millones de fotos que han sido y son fiel reflejo de la realidad de México, de sus sazones, su gente, coloridos y rincones. Imágenes también del mundo y para el mundo, para todos. Inicia su carrera profesional en 1978, después de realizar estudios en Comunicación, Cine, Periodismo y Fotografía. En 1978 publica sus primeros libros sobre México En el Mundo de la Máscara y Exvotos y Milagros Mexicanos. </p>
+						<p>Su encuentro y residencia en Venecia, Italia en 1979, con Ernest Hass, Aldo Ballo, Art Kane y Harold Edgerton, sienta las bases de su formación en las artes visuales y su concepto de arte-imagen. Se muda a Milán para especializarse en fotografía de arquitectura y cocina. Colabora como asistente del reconocido Renato Sala. </p>
+						<span>
+						<span class="entry-author"><a href="http://www.estudiourquiza.com/" target="_blank">Ignacio Urquiza</a></span>
+					</div>
+				</header>
+				<figure class="entry-thumbnail">
+					<a href="single.html" class="overlay overlay-primary"></a>
+					<div id="home_slide_show" class="full">
+						<!-- backstretch -->
+					</div>
+				</figure>
+			</article>
+			</div><!--/.row-->
+		</div>
+		<div class="col-lg-4 col-xl-7" id="login_home">
+			<div class="row">
+				<article class="entry style-hero type-post col-md-12 col-lg-12 colheight-sm-1 colheight-md-2 colheight-lg-2 colheight-xl-2">
+					<div class="ribbon ribbon-pulled ribbon-small ribbon-highlight">
+						<a href="blog.html">Inicia Sesión</a>
+					</div>
+					<header class="entry-header">
+						<%= form_for(:session, url: sessions_path) do |f| %>
+						<%= f.label :email %>
+						<p><%= f.text_field :email, { :class => "form-control" } %></p>
+						<p><%= f.label :password, :for => "session_password" %></p>
+						<p><%= f.password_field :password, { :class => "form-control" } %></p>
+						<div id="sign_in_button">
+							<%= f.submit "Iniciar sesión", class: "btn btn-large btn-default" %>
+						</div>
+						<% end %>
+						<div class="entry-meta">
+							<span>
+							¿Eres nuevo? <%= link_to 'Regístrate', new_user_path %> | <%= link_to "¿Olvidaste tu contraseña?" %>
+							</span>
+						</div>
+					</header>
+				</article>
+				</div><!--/.row-->
+			</div>
+		</div>
+		<script> $(document).ready(static_pages.slideshow()); </script>
