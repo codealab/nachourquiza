@@ -530,6 +530,10 @@ a:hover {
   color: #dfdfdf;
   background-color: #232323;
 }
+.panel-primary  > .panel-heading .panel-title a:hover {
+  background: rgb(93, 93, 93);
+  color: rgb(213, 213, 213);
+}
 .panel-primary  > .panel-heading + .panel-collapse .panel-body {
   border-top-color: #9d9d9d;
 }

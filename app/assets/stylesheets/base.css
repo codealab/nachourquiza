@@ -2,6 +2,13 @@
  * see *.less for some documentation
  * some helpers located on libs.less
  */
+
+.animate_02{
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+}
 .inline-block {
   display: inline-block;
   zoom: 1;

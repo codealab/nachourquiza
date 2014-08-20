@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140815150930) do
 
   create_table "courses", force: true do |t|
     t.string   "name"
+    t.string   "level"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -69,12 +70,12 @@ ActiveRecord::Schema.define(version: 20140815150930) do
 
   create_table "spots", force: true do |t|
     t.integer  "student_id"
-    t.integer  "group_id"
+    t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "spots", ["student_id", "group_id"], name: "index_spots_on_student_id_and_group_id", unique: true, using: :btree
+  add_index "spots", ["student_id", "course_id"], name: "index_spots_on_student_id_and_course_id", unique: true, using: :btree
 
   create_table "units", force: true do |t|
     t.integer  "course_id"

@@ -1,5 +1,4 @@
 # encoding: UTF-8
-
 FactoryGirl.define do
   factory :payment do
     user_id 1

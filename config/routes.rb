@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  
-  get 'static_pages/index'
 
-  root 'static_pages#index'
-  
-  resources :users
-  resources :spots
   resources :sessions
+
+  resources :courses
+  resources :units
+  resources :lectures
+
+  resources :users do
+    resources :payments
+    resources :spots
+  end
 
   match '/home',    to: 'static_pages#index',   via: 'get'
   match '/user',    to: 'users#show',           via: 'get'

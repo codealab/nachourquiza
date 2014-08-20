@@ -1,59 +1,139 @@
+<% @user.courses.each_with_index do |course, index| %>
+<%= index %>
+<% end %>
 <% provide(:title, "#{@user.name}") %>
-<h1><%= @user.name %><span class="line"></span></h1>
-
-<div class="all_width light_box">
-	<div class="col-md-4">
-		<h4>Perfil</h4>
-		<div class="under_pressure"></div>
-		<div class="all_width blue_box">
-			<div class="white_box">
-				<div class="text_center">
-					<% if @user.photo_url.include?('/default/') %>
-						<%= image_tag @user.photo_url.to_s, id: 'image_url' %>
-					<% else %>
-						<%= image_tag @user.photo_url(:thumb).to_s, :class => "profile_thumb" %>
+<div class="content bg-base section">
+	<div class="ribbon ribbon-highlight">
+		<ol class="breadcrumb ribbon-inner">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Features</a></li>
+			<li class="active">Review Archive</li>
+		</ol>
+	</div>
+	<header class="page-header">
+		<h1 class="page-title full-page-title">Mi Perfil</h1>
+	</header>
+	<div class="row style-single">
+		
+		<nav class="col-sm-3 sidenav">
+			<div class="panel-group" id="user_menu">
+				<div class="panel panel-primary">
+					<!-- init profile -->
+					<div class="panel-heading">
+						<h4 class="panel-title">
+						<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#user_profile">Perfil</a>
+						</h4>
+					</div>
+					<div id="user_profile" class="panel-collapse collapse" style="height: 0px;">
+						<div class="panel-body">
+							<ul class="nav">
+								<li><a href="#">Perfil</a></li>
+								<li><a href="#">Editar Perfil</a></li>
+								<li><a href="#">Cambiar contraseña</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- end profile -->
+					<!-- init courses -->
+					<% if !@user.courses.empty? %>
+					<div class="panel-heading">
+						<h4 class="panel-title">
+						<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#users_courses">Cursos</a>
+						</h4>
+					</div>
+					<div id="users_courses" class="panel-collapse collapse" style="height: 0px;">
+						<div class="panel-body">
+							<ul class="nav">
+								<% @user.courses.each do |course| %>
+								<li><a href="#"><%= course.name %></a></li>
+								<% end %>
+							</ul>
+						</div>
+					</div>
 					<% end %>
-					<div class="spacer"></div>
+					<!-- end courses -->
+					<!-- init payments -->
+					<div class="panel-heading">
+						<h4 class="panel-title">
+						<a href="#">Pagos</a>
+						</h4>
+					</div>
+					<!-- end payments -->
 				</div>
-				<table class="table table-striped">
-					<tbody>
-						<tr>
-							<th>Nombre</th>
-							<td><%= @user.name %></td>
-						</tr>
-						<tr>
-							<th>Email</th>
-							<td><%= @user.email %></td>
-						</tr>
-						<tr>
-							<th>Roles</th>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<% if @user.admin %>
-							<td>Administrador</td>
-							<% else %>
-							<td></td>
-							<% end %>
-						</tr>
-						<% if @user.student %>
-						<tr>
-							<td></td>
-							<td>Estudiante</td>
-						</tr>
-						<% end %>
-						<tr>
-							<td></td>
-							<% if @user.teacher %>
-							<td>Profesor</td>
-							<% else %>
-							<td></td>
-							<% end %>
-						</tr>
-					</tbody>
-				</table>
 			</div>
+		</nav>
+		<div class="col-sm-9 entry-content">
+			<!--Grid-->
+			<h2 id="grid">Información de Usuario</h2>
+			<div class="row">
+				<div class="col-sm-2">
+					<% if @user.photo_url.include?('/default/') %>
+					<%= image_tag @user.photo_url.to_s, id: 'image_url' %>
+					<% else %>
+					<%= image_tag @user.photo_url(:thumb).to_s, :class => "profile_thumb" %>
+					<% end %>
+				</div>
+				<div class="col-sm-10">
+					<table class="table table-striped">
+						<tbody>
+							<tr>
+								<td><strong>Nombre</strong></td>
+								<td><strong>Email</strong></td>
+								<td><strong>Cursos</strong></td>
+								<td><strong>Pagos</strong></td>
+							</tr>
+							<tr>
+								<td><%= @user.name %></td>
+								<td><%= @user.email %></td>
+								<td><%= @user.courses.count %></td>
+								<td><%= @user.payments.count %></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- courses container -->
+			<% if !@user.courses.empty? %>
+			<h2 id="grid">Cursos</h2>
+			<div class="panel-group" id="courses_collapse">
+				<div class="panel panel-primary">
+					<% @user.courses.each do |course| %>
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#course_detail_<%= course.id %>">
+									<%= course.name %>
+								</a>
+							</h4>
+						</div>
+						<div id="course_detail_<%= course.id %>" class="panel-collapse collapse" style="height: 0px;">
+							<div class="panel-body">
+								<div class="panel-group" id="course_collapse_<%= course.id %>">
+									<div class="panel panel-primary">
+										<% course.units.each do |unit| %>
+											<div class="panel-heading">
+												<h4 class="panel-title">
+													<a class="accordion-toggle animate_02" data-toggle="collapse" data-parent="#accordion" href="#unit_detail_<%= unit.id %>">
+														<%= unit.title %>
+													</a>
+												</h4>
+											</div>
+											<div id="unit_detail_<%= unit.id %>" class="panel-collapse collapse" style="height: 0px;">
+												<div class="panel-body">
+													<% unit.lectures.each do |lecture| %>
+														<p><a href="#"><%= lecture.name %></a></p>
+													<% end %>
+												</div>
+											</div>
+										<% end %>
+									</div>
+								</div>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+			<% end %>
+			<!-- end courses container -->
 		</div>
 	</div>
 </div>

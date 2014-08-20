@@ -1,4 +1,5 @@
+#encoding: UTF-8
 class Plan < ActiveRecord::Base
-	has_many :lectures
-	has_many :units
+	belongs_to :lecture
+	belongs_to :unit
 end
