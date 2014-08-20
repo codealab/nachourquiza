@@ -24,32 +24,32 @@
 					</div>
 				</figure>
 			</article>
-			</div><!--/.row-->
 		</div>
-		<div class="col-lg-4 col-xl-7" id="login_home">
-			<div class="row">
-				<article class="entry style-hero type-post col-md-12 col-lg-12 colheight-sm-1 colheight-md-2 colheight-lg-2 colheight-xl-2">
-					<div class="ribbon ribbon-pulled ribbon-small ribbon-highlight">
-						<a href="blog.html">Inicia Sesión</a>
-					</div>
-					<header class="entry-header">
-						<%= form_for(:session, url: sessions_path) do |f| %>
+	</div>
+	<div class="col-lg-4 col-xl-7" id="login_home">
+		<div class="row">
+			<article class="entry style-hero type-post col-md-12 col-lg-12 colheight-sm-1 colheight-md-2 colheight-lg-2 colheight-xl-2">
+				<div class="ribbon ribbon-pulled ribbon-small ribbon-highlight">
+					<a href="blog.html">Inicia Sesión</a>
+				</div>
+				<header class="entry-header">
+					<%= form_for(:session, url: sessions_path) do |f| %>
 						<%= f.label :email %>
 						<p><%= f.text_field :email, { :class => "form-control" } %></p>
 						<p><%= f.label :password, :for => "session_password" %></p>
 						<p><%= f.password_field :password, { :class => "form-control" } %></p>
 						<div id="sign_in_button">
-							<%= f.submit "Iniciar sesión", class: "btn btn-large btn-default" %>
+							<%= f.submit "Iniciar sesión", class: "btn btn-default" %>
 						</div>
-						<% end %>
-						<div class="entry-meta">
-							<span>
-							¿Eres nuevo? <%= link_to 'Regístrate', new_user_path %> | <%= link_to "¿Olvidaste tu contraseña?" %>
-							</span>
-						</div>
-					</header>
-				</article>
-				</div><!--/.row-->
-			</div>
+					<% end %>
+					<div class="entry-meta">
+						<span>
+						¿Eres nuevo? <%= link_to 'Regístrate', new_user_path %> | <%= link_to "¿Olvidaste tu contraseña?" %>
+						</span>
+					</div>
+				</header>
+			</article>
 		</div>
-		<script> $(document).ready(static_pages.slideshow()); </script>
+	</div>
+</div>
+<script> $(document).ready(static_pages.slideshow()); </script>

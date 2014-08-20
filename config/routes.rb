@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  root 'sessions#new'
+  root 'static_pages#index'
 
   resources :sessions
 
   resources :courses
   resources :units
   resources :lectures
+  resources :password_resets
 
   resources :users do
     resources :payments

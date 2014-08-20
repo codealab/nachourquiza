@@ -7,23 +7,6 @@
 	height: 32px;
 	cursor: pointer;
 }
-#user_photo_input{
-	position: relative;
-	cursor: pointer;
-}
-#user_photo_input label{
-	position: relative;
-	left: 5px;
-	top: 2px;
-}
-#resource_photo_path, #user_photo {
-	top: 0;
-	position: absolute;
-	overflow: hidden;
-	width: 100%;
-	left: 0;
-	opacity: 0;
-}
 #select_file_title{
 	top: 5px;
 	left: 10px;
@@ -32,8 +15,4 @@
 	overflow: hidden;
 	background: transparent;
 	border: 1px solid #444444;
-}
-.user_photo {
-	position: relative;
-	border: 1px solid black;
 }

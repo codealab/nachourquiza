@@ -1,0 +1,27 @@
+#container_image_url{
+	width: 100%;
+	text-align: center;
+	border: 1px solid rgba(69, 69, 69, 0.3);
+}
+#user_photo_input{
+	position: relative;
+	cursor: pointer;
+}
+#user_photo_input label{
+	position: relative;
+	left: 5px;
+	top: 2px;
+}
+#resource_photo_path, #user_photo {
+	cursor: pointer;
+	top: 0;
+	position: absolute;
+	overflow: hidden;
+	width: 100%;
+	left: 0;
+	opacity: 0;
+}
+.user_photo {
+	position: relative;
+	border: 1px solid rgba(69, 69, 69, 0.3);
+}
