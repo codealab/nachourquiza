@@ -18,7 +18,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.student = true
+    if current_user
+      @user.student = true if current_user.admin?
+    end
     if @user.save
       if params[:user][:photo].present?
         render :crop

@@ -1,46 +1,41 @@
 <div class="row" id="fade_form">
-  <div class="col-md-4 col-md-offset-4">
-    <%= simple_form_for @user, :html => {:multipart => true, :class => 'form-horizontal'} do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+	<div class="col-md-4 col-md-offset-4">
+		<%= simple_form_for @user, :html => {:multipart => true, :class => 'form-horizontal'} do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
 			<p><%= f.input :name, label:"Nombre" %></p>
-			<% if @user.photo_url.to_s.include?('/default/') %>
-				<img src="/assets/user_default.png" id="image_url" alt="">
-			<% else %>
-				<%= image_tag @user.photo_url(:thumb).to_s, id: 'image_url' %>
-			<% end %>
+			<div id="container_image_url">
+				<% if @user.photo_url.to_s.include?('/default/') %>
+					<img src="/assets/default/user/default.png" id="image_url" alt="">
+				<% else %>
+					<%= image_tag @user.photo_url(:thumb).to_s, id: 'image_url' %>
+				<% end %>
+			</div>
 			<div id="user_photo_input" class="btn-default">
 				<p><%= f.input :photo, label:"Seleccionar foto de perfil" %></p>
 			</div>
 			<p><%= f.input :email, label:"Email" %></p>
-		<% if current_user %>
-			<% if current_user.admin? %>
-				<% if !current_user?(@user) %>
-					<p><%= f.input :admin, label:"Administrador" %></p>
-				<% end %>
+			<% if current_user %>
+				<% if current_user.admin? %>
+					<% if !current_user?(@user) %>
+						<p><%= f.input :admin, label:"Administrador" %></p>
+					<% end %>
 					<p><%= f.input :student, label:"Estudiante" %></p>
 					<p><%= f.input :teacher, label:"Profesor" %></p>
+				<% end %>
 			<% end %>
+			<% if params[:action] == 'new' || params[:action] == 'create' %>
+				<p><%= f.input :password, label:"Contraseña" %></p>
+				<p><%= f.input :password_confirmation, label:"Confirmación de Contraseña" %></p>
+			<% end %>
+			<div id="sign_in_button">
+				<% if params[:action]=='new' %>
+					<p><%= f.submit "Crear Usuario", class: "btn btn-default" %></p>
+				<% else %>
+					<p><%= f.submit "Guardar Cambios", class: "btn btn-default" %></p>
+				<% end %>
+			</div>
 		<% end %>
-		<% if params[:action] == 'new' || params[:action] == 'create' %>
-			<p><%= f.input :password, label:"Contraseña" %></p>
-			<p><%= f.input :password_confirmation, label:"Confirmación de Contraseña" %></p>
-		<% end %>
-		<div id="sign_in_button">
-			<% if params[:action]=='new' %>
-				<p><%= f.submit "Crear Usuario", class: "btn btn-sm btn-primary" %></p>
-			<% else %>
-				<p><%= f.submit "Guardar Cambios", class: "btn btn-sm btn-primary" %></p>
-			<% end %>
-		</div>
-    <% end %>
-  </div>
-  <% if params[:action] == 'edit' %>
-		<div class="boton_der">
-			<%= link_to edit_password_reset_path(@user) do %>
-				<p><button type="button" class="btn btn-default">Cambiar contraseña</button></p>
-			<% end %>
-		</div>
-	<% end %>
+	</div>
 </div>
 <script>
 	$(document).ready(function($) {

@@ -16,7 +16,11 @@
       <li><a href="#">Contacto</a></li>
       <li><a href="#">Términos &amp; Condiciones</a></li>
       <li><a href="#">Aviso de Privacidad</a></li>
-      <li><%= link_to "Iniciar Sesión", signin_path %></li>
+      <% if current_user %>
+        <li><%= link_to "Cerrar Sesión", signout_path, :method => "delete" %></li>
+      <% else %>
+        <li><%= link_to "Iniciar Sesión", signin_path %></li>
+      <% end %>
     </ul>
     
     <ul class="nav nav-icons">

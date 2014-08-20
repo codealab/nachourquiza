@@ -18,7 +18,7 @@
 .absolute{ position: absolute; }
 .relative{ position: relative; }
 img{ max-width: 100%; }
-input, select, textarea{
+/*input, select, textarea{
 	border: 1px solid #444444;
 	background-color: transparent;
 	color: #444444;
@@ -28,12 +28,12 @@ input, select, textarea{
 	padding: 5px;
 	width: 100%;
 }
+*/
 input[type="submit"]{
 	width: auto;
 }
-input, select{ height: 30px; }
+/*input, select{ height: 30px; }*/
 textarea { resize:vertical; }
-
 #admin_menu .panel {
 	margin-bottom: 0px;
 }

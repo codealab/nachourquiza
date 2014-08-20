@@ -31,3 +31,5 @@ units.each_with_index do |unit,index|
 		indice+=1
 	end
 end
+
+Payments.create()
