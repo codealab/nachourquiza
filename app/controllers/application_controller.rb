@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
   include SessionsHelper
+  include PaymentsHelper
 
   before_action :require_login
 

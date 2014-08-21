@@ -29,180 +29,193 @@
 	<type label="SET" length="1" sql="SET" quote=""/>
 	<type label="Bit" length="0" sql="bit" quote=""/>
 </group>
-</datatypes><table x="26" y="22" name="Users">
-	<row name="id" null="1" autoincrement="1">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="name" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="email" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="password_digest" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="photo" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="student" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="teacher" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="admin" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<key type="PRIMARY" name="">
-	<part>id</part>
-	</key>
+</datatypes><table x="399" y="342" name="Users">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="email" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="password_digest" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="photo" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="student" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="teacher" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="admin" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
 </table>
-<table x="222" y="24" name="Spots">
-	<row name="id" null="1" autoincrement="1">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="student_id" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default><relation table="Users" row="id" />
-	</row>
-	<row name="course_id" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default><relation table="Courses" row="id" />
-	</row>
-	<row name="new field" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<key type="PRIMARY" name="">
-	<part>id</part>
-	</key>
+<table x="311" y="199" name="Spots">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="course_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Courses" row="id" />
+</row>
+<row name="student_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Users" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
 </table>
-<table x="373" y="25" name="Courses">
-	<row name="id" null="1" autoincrement="1">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="name" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<key type="PRIMARY" name="">
-	<part>id</part>
-	</key>
+<table x="128" y="120" name="Courses">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
 </table>
-<table x="558" y="36" name="Units">
-	<row name="id" null="1" autoincrement="1">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="course_id" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default><relation table="Courses" row="id" />
-	</row>
-	<row name="title" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="order" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<key type="PRIMARY" name="">
-	<part>id</part>
-	</key>
+<table x="310" y="50" name="Units">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="course_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Courses" row="id" />
+</row>
+<row name="title" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="order" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
 </table>
-<table x="371" y="135" name="Plans">
-	<row name="id" null="1" autoincrement="1">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default><relation table="Units" row="id" />
-	</row>
-	<row name="unit_id" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="lecture_id" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default><relation table="Lecture" row="id" />
-	</row>
-	<row name="order" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="core" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<key type="PRIMARY" name="">
-	<part>id</part>
-	</key>
+<table x="460" y="161" name="Plans">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Units" row="id" />
+</row>
+<row name="unit_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="lecture_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Lecture" row="id" />
+</row>
+<row name="order" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="core" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
 </table>
-<table x="555" y="203" name="Lecture">
-	<row name="id" null="1" autoincrement="1">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="title" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<key type="PRIMARY" name="">
-	<part>id</part>
-	</key>
+<table x="644" y="434" name="Lecture">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="title" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="content" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="video_url" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
 </table>
-<table x="696" y="135" name="Photo">
-	<row name="id" null="1" autoincrement="1">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="delivery_id" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default><relation table="Deliveries" row="id" />
-	</row>
-	<row name="title" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="file" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="description" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<key type="PRIMARY" name="">
-	<part>id</part>
-	</key>
+<table x="656" y="238" name="Attachments">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="delivery_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Deliveries" row="id" />
+</row>
+<row name="file_type" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="file" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="title" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="description" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
 </table>
-<table x="695" y="41" name="Deliveries">
-	<row name="id" null="1" autoincrement="1">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="unit_id" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default><relation table="Units" row="id" />
-	</row>
-	<key type="PRIMARY" name="">
-	<part>id</part>
-	</key>
+<table x="667" y="78" name="Deliveries">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="unit_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Units" row="id" />
+</row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Users" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
 </table>
-<table x="216" y="217" name="Payments">
-	<row name="id" null="1" autoincrement="1">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="user_id" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default><relation table="Users" row="id" />
-	</row>
-	<row name="concept_id" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default><relation table="Concepts" row="id" />
-	</row>
-	<row name="quantity" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="clarification" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<key type="PRIMARY" name="">
-	<part>id</part>
-	</key>
+<table x="185" y="357" name="Payments">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="concept_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Concepts" row="id" />
+</row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Users" row="id" />
+</row>
+<row name="quantity" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="clarification" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="date" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
 </table>
-<table x="28" y="263" name="Concepts">
-	<row name="id" null="1" autoincrement="1">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<row name="name" null="1" autoincrement="0">
-	<datatype>INTEGER</datatype>
-	<default>NULL</default></row>
-	<key type="PRIMARY" name="">
-	<part>id</part>
-	</key>
+<table x="26" y="323" name="Concepts">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
 </table>
 </sql>

@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815150930) do
+ActiveRecord::Schema.define(version: 20140820180057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachments", force: true do |t|
+    t.integer  "delivery_id"
+    t.string   "type"
+    t.string   "file"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "concepts", force: true do |t|
     t.string   "name"
@@ -37,6 +47,7 @@ ActiveRecord::Schema.define(version: 20140815150930) do
 
   create_table "lectures", force: true do |t|
     t.string   "name"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,15 +57,7 @@ ActiveRecord::Schema.define(version: 20140815150930) do
     t.integer  "concept_id"
     t.integer  "quantity"
     t.text     "clarification"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "photos", force: true do |t|
-    t.string   "title"
-    t.string   "file"
-    t.text     "description"
-    t.integer  "delivery_id"
+    t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

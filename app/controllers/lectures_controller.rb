@@ -1,4 +1,5 @@
 class LecturesController < ApplicationController
+  
   def index
   end
 
@@ -10,4 +11,5 @@ class LecturesController < ApplicationController
 
   def edit
   end
+
 end

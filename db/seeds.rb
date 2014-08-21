@@ -17,19 +17,27 @@ plan_lectures = [
 	["Formatos", "Arreglar archivo Raw", "Ajustes de niveles ", "Ajustes de curvas", "Introducción al histograma", "Tarea"]
 ]
 
-User.create({ name: "Contacto", email: "contacto@codealab.mx", password: "temporal", password_confirmation: "temporal", admin: true })
+user = User.create({ name: "Contacto", email: "contacto@codealab.mx", password: "temporal", password_confirmation: "temporal", admin: true })
 
 course = Course.create({ name: 'T1 - (5.6 hr)' })
 
 units = Unit.create([{ course_id: 1, title: "La luz" }, { course_id: 1, title: "Historía de la Fotografía" }, { course_id: 1, title: "La Camara Fotográfica " }, { course_id: 1, title: "Fotografia Digital" }, { course_id: 1, title: "Exposición" }, { course_id: 1, title: "Tipos de Camara " }, { course_id: 1, title: "Fotografos Clásicos" }, { course_id: 1, title: "Diafragma y Profundidad de Campo " }, { course_id: 1, title: "Opturador y la velocidad " }, { course_id: 1, title: "Calidad de Imagen e ISO " }, { course_id: 1, title: "Planos de Encuadre" }, { course_id: 1, title: "Fotografos contemporaneos" }, { course_id: 1, title: "Principios de Composición" }, { course_id: 1, title: "Ajustes Basicos de Photoshop" }])
 
-units.each_with_index do |unit,index|
+units.each_with_index do | unit, index|
 	indice = 0
 	plan_lectures[index].each do |lecture|
-		lecture = Lecture.create( name: plan_lectures[index][indice] )
-		plan = Plan.create( lecture_id: lecture.id, unit_id: unit.id )
+		lecture = Lecture.create( name: plan_lectures[index][indice], content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quos aliquam debitis ipsa ducimus culpa cum nostrum voluptatem vero, assumenda tempore est, mollitia corrupti, impedit possimus eos architecto, adipisci dolorem." )
+		plan = Plan.create( lecture_id: lecture.id, unit_id: unit.id, core: (indice%2==0?true:false) )
 		indice+=1
 	end
 end
 
-Payments.create()
+Concept.create([{ name: "Inscripción" },{ name: "Mensualidad" }])
+
+user.payments.build( date: Date.today+(rand(0..10).days), quantity: 1200, concept_id: 1, clarification: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum necessitatibus ut sed nemo deserunt iste ullam quia, voluptas architecto accusamus. Libero molestiae ipsam omnis, suscipit similique reprehenderit eaque quibusdam nihil." )
+
+10.times do |time|
+	user.payments.build( date: Date.today+(rand(0..10).days), quantity: 600, concept_id: 2, clarification: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum necessitatibus ut sed nemo deserunt iste ullam quia, voluptas architecto accusamus. Libero molestiae ipsam omnis, suscipit similique reprehenderit eaque quibusdam nihil." )
+end
+
+user.save

@@ -50,11 +50,13 @@
 					<% end %>
 					<!-- end courses -->
 					<!-- init payments -->
-					<div class="panel-heading">
-						<h4 class="panel-title">
-						<a href="#payments">Pagos</a>
-						</h4>
-					</div>
+					<% if !@user.payments.empty? %>
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a href="#payments">Pagos</a>
+							</h4>
+						</div>
+					<% end %>
 					<!-- end payments -->
 				</div>
 			</div>
@@ -132,17 +134,45 @@
 			<% end %>
 			<!-- end courses container -->
 			<!-- init payments -->
-				<div class="col-sm-12 entry-content">
-					<!--Grid-->
-					<h2 id="payments">Pagos</h2>
-					<div class="row">
-						<% if @user.payments.empty? %>
-							<p>Hasta el momento, no tienes ningún pago realizado.</p>
-						<% else %>
-							<p>Total $0.00</p>
-						<% end %>
+				<% if !@user.payments.empty? %>
+					<div class="col-sm-12 entry-content">
+						<!--Grid-->
+						<h2 id="payments">
+							Pagos
+							<%= link_to "Nuevo Pago", new_user_payment_path(@user), :class => "btn btn-info right" %>
+						</h2>
+						<div class="row">
+							<% if @user.payments.empty? %>
+								<p>Hasta el momento, no tienes ningún pago realizado.</p>
+							<% else %>
+								<table class="table table-striped">
+									<tbody>
+										<tr>
+											<td><strong>Fecha</strong></td>
+											<td><strong>Concepto</strong></td>
+											<td><strong>Aclaración</strong></td>
+											<td><strong>Cantidad</strong></td>
+										</tr>
+										<% @user.payments.each do |payment| %>
+											<tr>
+												<td><%= payment.date %></td>
+												<td><%= payment.concept.name %></td>
+												<td><%= payment.clarification %></td>
+												<td><%= payment.amount %></td>
+											</tr>
+										<% end %>
+										<tr>
+											<td></td>
+											<td></td>
+											<td>Total</td>
+											<td><%= total_calculate(@user.payments) %></td>
+										</tr>
+									</tbody>
+								</table>
+							<% end %>
+						</div>
 					</div>
-				</div>
+				<% end %>
 			<!-- end payments -->
 		</div>
 	</div>
