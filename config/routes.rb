@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :units
   resources :lectures
   resources :password_resets
-
+  resources :payments
+  
   resources :users do
     resources :payments
     resources :spots

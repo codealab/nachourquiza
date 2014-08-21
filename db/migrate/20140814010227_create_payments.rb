@@ -5,6 +5,7 @@ class CreatePayments < ActiveRecord::Migration
       t.integer :concept_id
       t.integer :quantity
       t.text :clarification
+      t.date :date
 
       t.timestamps
     end
