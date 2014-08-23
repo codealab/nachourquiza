@@ -21,6 +21,10 @@ Rails.application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
+  post "payments/concept"
+  post "courses/unit"
+  get "courses/unit"
+
   get ':controller(/:action(/:id))(.:format)'
 
 end

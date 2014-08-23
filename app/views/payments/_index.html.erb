@@ -1,0 +1,33 @@
+<% if @payments.empty? %>
+<p>- No hay pagos - </p>
+<% else %>
+<table class="table table-striped tablesorter">
+	<thead>
+		<tr>
+			<th class="col-sm-1">Fecha</th>
+			<th class="col-sm-2">Concepto</th>
+			<th>Aclaración</th>
+			<th class="col-sm-1">Cantidad</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @payments.each do |payment| %>
+		<tr>
+			<td><%= payment.date %></td>
+			<td><%= payment.concept.name %></td>
+			<td><%= payment.clarification %></td>
+			<td><%= payment.amount %></td>
+		</tr>
+		<% end %>
+	</tbody>
+	<tfooter>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>Total</td>
+		<td><%= total_calculate(@payments) %></td>
+	</tr>
+	</tfooter>
+</table>
+<% end %>
+<%= paginate @payments %>

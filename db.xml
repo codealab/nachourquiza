@@ -81,6 +81,9 @@
 <row name="name" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="level" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -115,7 +118,7 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="Lecture" row="id" />
 </row>
-<row name="order" null="1" autoincrement="0">
+<row name="position" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="core" null="1" autoincrement="0">
@@ -125,7 +128,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="644" y="434" name="Lecture">
+<table x="661" y="426" name="Lecture">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -136,6 +139,9 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="video_url" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="position" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">

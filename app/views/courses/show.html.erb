@@ -1,2 +1,61 @@
-<h1>Courses#show</h1>
-<p>Find me in app/views/courses/show.html.erb</p>
+<% provide(:title, "Curso #{@course.name}") %>
+<div class="content bg-base section">
+	<div class="ribbon ribbon-highlight">
+		<ol class="breadcrumb ribbon-inner">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Features</a></li>
+			<li class="active">Review Archive</li>
+		</ol>
+	</div>
+	<%= head_title("Curso #{@course.name}") %>
+	<div class="row style-single">
+		<nav class="col-sm-3 sidenav">
+			<ul class="nav">
+				<li>
+					<a href="#">Link</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="col-sm-9 entry-content">
+			<h2 id="info_user">
+			Unidades del Curso
+			<button class="btn btn-danger right" onClick="course_actions.reset();">Cancelar</button>
+			<button class="btn btn-success right" onClick="course_actions.save();">Guardar Cambios</button>
+			<button class="btn btn-primary right" onClick="course_actions.reset();">Reordenar</button>
+			<button class="btn btn-default right" data-toggle="modal" data-target="#new_unit_modal">Nueva Unidad</button>
+			</h2>
+			<div class="row">
+				<div class="panel panel-primary" id="container_units">
+					<% @course.units.each do |unit| %>
+						<%= render 'courses/unit', object: unit %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- modals -->
+<!-- new unit modal -->
+<!-- Modal -->
+<div class="modal fade" id="new_unit_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="myModalLabel">Nueva Unidad</h4>
+			</div>
+			<%= form_tag( { :controller => :courses, :action => :unit }, { :remote => true, :id => 'course_unit_form' } ) do %>
+				<div class="modal-body">
+					<%= number_field_tag "course_id", @course.id, :hidden => true %>
+					<%= text_field_tag "title", nil, :class => "form-control", placeholder: "Escribe el nombre de la nueva unidad." %>
+				</div>
+				<div class="modal-footer">
+					<%= submit_tag "Crear Unidad", :class => "btn btn-success" %>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+<!-- new unit modal -->
+<!-- modals -->

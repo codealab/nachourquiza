@@ -1,8 +1,14 @@
 // Place all the styles related to the Payments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#selector_fecha label{ width: 100%; }
 #selector_fecha select{ float: left; }
 #selector_fecha select:nth-child(1){ width: 20%; }
 #selector_fecha select:nth-child(2){ width: 20%; }
 #selector_fecha select:nth-child(3){ width: 50%; }
 #selector_fecha select:nth-child(4){ width: 30%; }
+
+#new_concept_container label{ width: 100%; }
+#new_concept_container select{ float: left; width: 60%; }
+#new_concept{ width: 40%; float: left; }
+#new_concept .btn{ width: 100%; }

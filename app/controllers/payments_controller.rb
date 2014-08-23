@@ -1,7 +1,10 @@
+#encoding: UTF-8
 class PaymentsController < ApplicationController
 
   def index
-  	@payments = Payment.all
+  	query = Payment.all
+    query = Payment.where( :user_id => params[:user_id] ) if params[:user_id]
+    @payments = query.order('date DESC').page(params[:page])
   end
 
   def show
@@ -9,18 +12,23 @@ class PaymentsController < ApplicationController
   end
 
   def new
+    @user = User.find(params[:user_id])
   	@payment = Payment.new
-  	@user = User.find(params[:user_id])
   end
 
   def create
-    @payment = Payment.new(payment_params)
-    if @payment.save
+    @user = User.find(params[:user_id])
+    @user.payments.build(payment_params)
+    if @user.save
       flash[:success] = "Pago realizado exitosamente"
-      redirect_to user_path(@payment.user)
+      redirect_to user_path(@user)
     else
       render 'new'
     end
+  end
+
+  def concept
+    @concept = Concept.create( name: params[:concept] ) if params[:concept]
   end
 
   def edit

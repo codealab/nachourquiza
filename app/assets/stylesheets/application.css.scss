@@ -10,6 +10,7 @@
  *
  *= require jquery.Jcrop
  *= require_self
+ *= require bootstrap-wysihtml5
  *= require_tree .
  */
 
@@ -75,4 +76,10 @@ textarea { resize:vertical; }
   background-color: #F8F8D9;
   border-color: #E9E9C6;
   color: #B6B260;
+}
+.animate_02{
+	-webkit-transition: all 0.2s linear;
+  	-moz-transition: all 0.2s linear;
+  	-ms-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
 }

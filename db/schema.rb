@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 20140820180057) do
   create_table "lectures", force: true do |t|
     t.string   "name"
     t.text     "content"
+    t.string   "video_url"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65,7 +67,7 @@ ActiveRecord::Schema.define(version: 20140820180057) do
   create_table "plans", force: true do |t|
     t.integer  "unit_id"
     t.integer  "lecture_id"
-    t.integer  "order"
+    t.integer  "position"
     t.boolean  "core"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -83,7 +85,7 @@ ActiveRecord::Schema.define(version: 20140820180057) do
   create_table "units", force: true do |t|
     t.integer  "course_id"
     t.string   "title"
-    t.integer  "order"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -7,11 +7,8 @@
 			<li class="active">Review Archive</li>
 		</ol>
 	</div>
-	<header class="page-header">
-		<h1 class="page-title full-page-title">Mi Perfil</h1>
-	</header>
+	<%= head_title("Mi Perfil") %>
 	<div class="row style-single">
-		
 		<nav class="col-sm-3 sidenav">
 			<div class="panel-group" id="user_menu">
 				<div class="panel panel-primary">
@@ -51,11 +48,11 @@
 					<!-- end courses -->
 					<!-- init payments -->
 					<% if !@user.payments.empty? %>
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a href="#payments">Pagos</a>
-							</h4>
-						</div>
+					<div class="panel-heading">
+						<h4 class="panel-title">
+						<a href="#payments">Pagos</a>
+						</h4>
+					</div>
 					<% end %>
 					<!-- end payments -->
 				</div>
@@ -93,86 +90,61 @@
 			</div>
 			<!-- courses container -->
 			<% if !@user.courses.empty? %>
-			<h2 id="courses">Cursos</h2>
+			<h2 id="courses">
+			<%= link_to "Cursos", courses_path %>
+			</h2>
 			<div class="panel-group" id="courses_collapse">
 				<div class="panel panel-primary">
 					<% @user.courses.each do |course| %>
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#course_detail_<%= course.id %>">
-									<%= course.name %>
-								</a>
-							</h4>
-						</div>
-						<div id="course_detail_<%= course.id %>" class="panel-collapse collapse" style="height: 0px;">
-							<div class="panel-body">
-								<div class="panel-group" id="course_collapse_<%= course.id %>">
-									<div class="panel panel-primary">
-										<% course.units.each do |unit| %>
-											<div class="panel-heading">
-												<h4 class="panel-title">
-													<a class="accordion-toggle animate_02" data-toggle="collapse" data-parent="#accordion" href="#unit_detail_<%= unit.id %>">
-														<%= unit.title %>
-													</a>
-												</h4>
-											</div>
-											<div id="unit_detail_<%= unit.id %>" class="panel-collapse collapse" style="height: 0px;">
-												<div class="panel-body">
-													<% unit.lectures.each do |lecture| %>
-														<p><a href="#"><%= lecture.name %></a></p>
-													<% end %>
-												</div>
-											</div>
-										<% end %>
+					<div class="panel-heading">
+						<h4 class="panel-title">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#course_detail_<%= course.id %>">
+							<%= course.name %>
+						</a>
+						</h4>
+					</div>
+					<div id="course_detail_<%= course.id %>" class="panel-collapse collapse" style="height: 0px;">
+						<div class="panel-body">
+							<div class="panel-group" id="course_collapse_<%= course.id %>">
+								<div class="panel panel-primary">
+									<% course.units.each do |unit| %>
+									<div class="panel-heading">
+										<h4 class="panel-title">
+										<a class="accordion-toggle animate_02" data-toggle="collapse" data-parent="#accordion" href="#unit_detail_<%= unit.id %>">
+											<%= unit.title %>
+										</a>
+										</h4>
 									</div>
+									<div id="unit_detail_<%= unit.id %>" class="panel-collapse collapse" style="height: 0px;">
+										<div class="panel-body">
+											<% unit.lectures.each do |lecture| %>
+											<p><a href="#"><%= lecture.name %></a></p>
+											<% end %>
+										</div>
+									</div>
+									<% end %>
 								</div>
 							</div>
 						</div>
+					</div>
 					<% end %>
 				</div>
 			</div>
 			<% end %>
 			<!-- end courses container -->
 			<!-- init payments -->
-				<% if !@user.payments.empty? %>
-					<div class="col-sm-12 entry-content">
-						<!--Grid-->
-						<h2 id="payments">
-							Pagos
-							<%= link_to "Nuevo Pago", new_user_payment_path(@user), :class => "btn btn-info right" %>
-						</h2>
-						<div class="row">
-							<% if @user.payments.empty? %>
-								<p>Hasta el momento, no tienes ningún pago realizado.</p>
-							<% else %>
-								<table class="table table-striped">
-									<tbody>
-										<tr>
-											<td><strong>Fecha</strong></td>
-											<td><strong>Concepto</strong></td>
-											<td><strong>Aclaración</strong></td>
-											<td><strong>Cantidad</strong></td>
-										</tr>
-										<% @user.payments.each do |payment| %>
-											<tr>
-												<td><%= payment.date %></td>
-												<td><%= payment.concept.name %></td>
-												<td><%= payment.clarification %></td>
-												<td><%= payment.amount %></td>
-											</tr>
-										<% end %>
-										<tr>
-											<td></td>
-											<td></td>
-											<td>Total</td>
-											<td><%= total_calculate(@user.payments) %></td>
-										</tr>
-									</tbody>
-								</table>
-							<% end %>
-						</div>
-					</div>
-				<% end %>
+			<% if !@payments.empty? %>
+			<div class="col-sm-12 entry-content">
+				<!--Grid-->
+				<h2 id="payments">
+				<%= link_to "Pagos", user_payments_path(@user) %>
+				<%= link_to "Nuevo Pago", new_user_payment_path(@user), :class => "btn btn-info right" %>
+				</h2>
+				<div class="row">
+					<%= render 'payments/index' %>
+				</div>
+			</div>
+			<% end %>
 			<!-- end payments -->
 		</div>
 	</div>

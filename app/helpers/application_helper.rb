@@ -9,4 +9,9 @@ module ApplicationHelper
     end
   end
 
+  def head_title(title)
+  	html = "<header class='page-header'><h1 class='page-title full-page-title'>#{title}</h1></header>"
+  	html.html_safe
+  end
+
 end

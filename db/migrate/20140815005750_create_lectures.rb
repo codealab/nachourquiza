@@ -3,6 +3,8 @@ class CreateLectures < ActiveRecord::Migration
     create_table :lectures do |t|
       t.string :name
       t.text :content
+      t.string :video_url
+      t.integer :position
 
       t.timestamps
     end

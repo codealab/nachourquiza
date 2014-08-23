@@ -36,6 +36,8 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.0.0.0)
       sass (~> 3.2)
+    bootstrap-wysihtml5-rails (0.3.2.100)
+      railties (>= 3.0)
     builder (3.2.2)
     callsite (0.0.11)
     cancancan (1.9.2)
@@ -271,6 +273,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.0.0.0)
+  bootstrap-wysihtml5-rails (~> 0.3.2.100)
   cancancan (~> 1.8)
   capybara (~> 2.2.1)
   carrierwave

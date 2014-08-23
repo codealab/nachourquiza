@@ -28,7 +28,7 @@
 				<p><%= f.input :password_confirmation, label:"Confirmación de Contraseña" %></p>
 			<% end %>
 			<div id="sign_in_button">
-				<% if params[:action]=='new' %>
+				<% if params[:action] == 'new' %>
 					<p><%= f.submit "Crear Usuario", class: "btn btn-default" %></p>
 				<% else %>
 					<p><%= f.submit "Guardar Cambios", class: "btn btn-default" %></p>

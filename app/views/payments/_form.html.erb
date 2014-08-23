@@ -8,7 +8,7 @@
 		<div id="new_concept_container">
 			<%= f.input :concept_id, label: "Concepto", :include_blank => true, collection: Concept.all.collect {|p| [ "#{p.name}", p.id ] } %>
 			<div id="new_concept">
-				<button class="btn btn-default" data-toggle="modal" data-target="#new_concept_modal">NUEVO CONCEPTO</button>
+				<div class="btn btn-default" data-toggle="modal" data-target="#new_concept_modal">NUEVO CONCEPTO</div>
 			</div>
 		</div>
 		<p><%= f.input :quantity, label: "Cantidad" %></p>

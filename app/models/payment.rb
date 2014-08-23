@@ -6,6 +6,8 @@ class Payment < ActiveRecord::Base
 
 	validates_presence_of :date, :user_id, :concept_id, :quantity
 
+	paginates_per 10
+
 	def amount
 		"$#{self.quantity}"
 	end

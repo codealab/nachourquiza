@@ -3,7 +3,7 @@ class CreatePlans < ActiveRecord::Migration
     create_table :plans do |t|
       t.integer :unit_id
       t.integer :lecture_id
-      t.integer :order
+      t.integer :position
       t.boolean :core
 
       t.timestamps

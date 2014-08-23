@@ -1,0 +1,28 @@
+<% if @lectures.empty? %>
+	<p>- No hay ninguna clase - </p>
+<% else %>
+	<table class="table table-striped tablesorter">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Contenido</th>
+				<th>Video</th>
+				<th>Editar</th>
+				<th>Eliminar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @lectures.order('position DESC').each do |lecture| %>
+				<tr>
+					<td><%= link_to lecture.name, lecture_path(lecture) %></td>
+					<td><%= lecture.content %></td>
+					<td><%= lecture.video_url %></td>
+					<td><%= link_to "Editar", edit_lecture_path(lecture), :class => "btn btn-info btn-xs" %></td>
+					<td><%= link_to "Eliminar", lecture_path(lecture) , :class => "btn btn-danger btn-xs", method: :delete %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>
+
+<%= paginate @lectures %>

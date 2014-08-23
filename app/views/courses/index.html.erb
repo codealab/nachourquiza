@@ -1,2 +1,33 @@
-<h1>Courses#index</h1>
-<p>Find me in app/views/courses/index.html.erb</p>
+<div class="content bg-base section">
+	
+	<div class="ribbon ribbon-highlight">
+		<ol class="breadcrumb ribbon-inner">
+			<li><a href="/">Home</a></li>
+		</ol>
+	</div>
+
+	<%= head_title("Detalle de Cursos") %>
+
+	<div class="row style-single">
+		<nav class="col-sm-3 sidenav">
+			<div class="panel-group">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+						<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#user_profile">Cursos</a>
+						</h4>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div class="col-sm-9 entry-content">
+			<h2>
+				Detalle
+				<a class="btn btn-info right" href="/courses/new">Nuevo Curso</a>
+			</h2>
+			<div class="row">
+				<%= render 'courses/index' %>
+			</div>
+		</div>
+	</div>
+</div>

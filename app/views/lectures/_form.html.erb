@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<%= simple_form_for @lecture do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+			<%= f.input :name, label: "Nombre" %>
+			<%= f.input :content, label: "Contenido de la clase", label_html: { :class => "wysihtml5" } %>
+			<%= f.input	:video_url, label: "Url de video de la clase" %>
+			<p><%= f.input :position, label: "Posición" %></p>
+			<% if params[:action]=='new' %>
+				<%= f.submit "Crear Clase", class: "btn btn-default" %>
+			<% else %>
+				<%= f.submit "Guardar Clase", class: "btn btn-default" %>
+			<% end %>
+		<% end %>
+	</div>
+</div>

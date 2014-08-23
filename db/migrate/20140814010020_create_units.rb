@@ -3,7 +3,7 @@ class CreateUnits < ActiveRecord::Migration
     create_table :units do |t|
       t.integer :course_id
       t.string :title
-      t.integer :order
+      t.integer :position
 
       t.timestamps
     end
