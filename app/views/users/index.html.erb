@@ -26,11 +26,11 @@
 				<% if user.student %><td>Sí</td><% else %><td>No</td><% end %>
 				<% if user.teacher %><td>Sí</td><% else %><td>No</td><% end %>
 				<% if current_user.admin? %>
-					<th>
+					<td>
 						<a href="#">
 							<p><button type="button" class="btn btn-danger btn-xs disabled">Borrar</button></p>
 						</a>
-					</th>
+					</td>
 				<% end %>
 			</tr>
 			<% end %>
