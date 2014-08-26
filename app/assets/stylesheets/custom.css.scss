@@ -1,5 +1,26 @@
 .link_icon{
-	float: right;
 	color: #f1c40f;
 	position: relative;
+	margin: 8px 0px 8px -1px;
+}
+.container_reorder_arrows, .reorder_units{
+	display: none;
+}
+#reorder_units, #new_unit{
+	display: block;
+}
+#mini_photo {
+	border: 1px solid white;
+	padding: 0;
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+	margin: 0px 10px 10px 0px;
+}
+#mini_photo, #mini_photo img{
+	max-width: none;
+}
+.jcrop-holder{
+	text-align: center;
+	margin: 10px auto 10px auto;
 }

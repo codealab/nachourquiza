@@ -26,7 +26,7 @@ units = Unit.create([{ course_id: 1, title: "La luz" }, { course_id: 1, title: "
 units.each_with_index do | unit, index|
 	indice = 0
 	plan_lectures[index].each do |lecture|
-		lecture = Lecture.create( name: plan_lectures[index][indice], content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quos aliquam debitis ipsa ducimus culpa cum nostrum voluptatem vero, assumenda tempore est, mollitia corrupti, impedit possimus eos architecto, adipisci dolorem.", video: "https://www.youtube.com/watch?v=RsQjC5zVnt8" )
+		lecture = Lecture.create( name: plan_lectures[index][indice], content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quos aliquam debitis ipsa ducimus culpa cum nostrum voluptatem vero, assumenda tempore est, mollitia corrupti, impedit possimus eos architecto, adipisci dolorem.", video_url: "https://www.youtube.com/watch?v=RsQjC5zVnt8" )
 		plan = Plan.create( lecture_id: lecture.id, unit_id: unit.id, core: (indice%2==0?true:false) )
 		indice+=1
 	end

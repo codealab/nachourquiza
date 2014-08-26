@@ -1,47 +1,96 @@
 <% object = object || @unit %>
-<div class="panel-heading <% if params[:action]!='show' %>unit_new<% end %>" id="panel_unit_<%= object.id %>">
-	<h4 class="panel-title">
-		<a class="accordion-toggle animate_02" data-toggle="collapse" data-parent="#accordion" href="#unit_detail_<%= object.id %>">
-			<%= object.title %>
-		</a>
-	</h4>
-</div>
-<div id="unit_detail_<%= object.id %>" class="panel-collapse collapse" style="height: 0px;">
-	<div class="row">
-		<div class="col-md-12">
-			<a href="#" class="link_icon btn btn-default right">
-				<i class="icon icon-file-alt"></i> Nueva Clase
+<% index = index || (@course.units.count-1) %>
+<div class="panel panel-primary panel_unit left relative" id="panel_unit_<%= index %>" data-position="<%= object.id %>">
+	<div class="panel-heading relative <% if params[:action]!='show' %>unit_new<% end %>">
+		<h4 class="panel-title">
+			<div class="container_reorder_arrows absolute">
+				<div class="arrow_asc absolute">
+					<a href="javascript:void(0);" class="asc left icon icon-chevron-up" data-id="<%= object.id %>" data-position="<%= index %>" onClick="course_actions.reorder(event);"></a>
+				</div>
+				<div class="arrow_desc absolute">
+					<a href="javascript:void(0);" class="left icon icon-chevron-down" data-id="<%= object.id %>" data-position="<%= index %>" onClick="course_actions.reorder(event);"></a>
+				</div>
+			</div>
+			<div class="container_lecture_actions reorder_units absolute">
+				<%= link_to unit_path(object) , :class => "btn link_icon right btn-xs btn-danger" do %>
+					<i class="icon icon-remove"></i>Eliminar
+				<% end %>
+				<%= link_to unit_path(object) , :class => "btn link_icon right btn-xs btn-info" do %>
+					<i class="icon icon-eye-open"></i>Ver
+				<% end %>
+			</div>
+			<a class="accordion-toggle panel_title_lecture accordion" data-toggle="collapse" data-parent="#accordion" href="#unit_detail_<%= object.id %>">
+				<%= object.title %>
 			</a>
+		</h4>
+	</div>
+	<div id="unit_detail_<%= object.id %>" class="panel-collapse collapse" style="height: 0px;">
+		<div class="panel-body table-responsive">
+			<a href="#" class="link_icon btn btn-default right">
+				<i class="icon icon-list-ol"></i> Reordenar Clases
+			</a>
+			<button href="#" class="link_icon btn btn-default right" data-toggle="modal" data-target="#new_lecture_modal_<%= object.id %>">
+				<i class="icon icon-file-alt"></i> Nueva Clase
+			</button>
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th>Posición</th>
+						<th>Clase</th>
+						<th>Video</th>
+						<th class="aligncenter">Editar</th>
+						<th class="aligncenter">Borrar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% object.lectures.each do |lecture| %>
+					<tr id="container_lectures_unit_<%= object.id %>">
+						<td>
+							<div class="arrow_asc">
+								<a href="javascript:void(0);" class="asc left icon icon-chevron-up" data-id="<%= object.id %>" data-position="<%= index %>" onClick="course_actions.reorder(event);"></a>
+							</div>
+							<div class="arrow_desc">
+								<a href="javascript:void(0);" class="left icon icon-chevron-down" data-id="<%= object.id %>" data-position="<%= index %>" onClick="course_actions.reorder(event);"></a>
+							</div>
+						</td>
+						<td>
+							<%= link_to lecture.name, lecture_path(lecture) %>
+						</td>
+						<td>
+							<%= lecture.video_url %>
+						</td>
+						<td class="aligncenter">
+							<%= link_to "Editar", edit_lecture_path(lecture), :class => "btn btn-info btn-xs" %>
+						</td>
+						<td class="aligncenter">
+							<%= link_to "Borrar", lecture_path(lecture), :class => "btn btn-danger btn-xs", method: :delete %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
 		</div>
 	</div>
-	<div class="panel-body table-responsive">
-		<table class="tablesorter table table-hover table-bordered">
-			<thead>
-				<tr>
-					<th>Clase</th>
-					<th>Video</th>
-					<th class="aligncenter">Editar</th>
-					<th class="aligncenter">Borrar</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% object.lectures.each do |lecture| %>
-				<tr>
-					<td>
-						<%= link_to lecture.name, lecture_path(lecture) %>
-					</td>
-					<td>
-						<%= lecture.video_url %>
-					</td>
-					<td class="aligncenter">
-						<%= link_to "Editar", edit_lecture_path(lecture), :class => "btn btn-info btn-xs" %>
-					</td>
-					<td class="aligncenter">
-						<%= link_to "Borrar", lecture_path(lecture), :class => "btn btn-danger btn-xs", method: :delete %>
-					</td>
-				</tr>
-				<% end %>
-			</tbody>
-		</table>
+</div>
+<!-- new unit modal -->
+<div class="modal fade" id="new_lecture_modal_<%= object.id %>" tabindex="-1" role="dialog" aria-labelledby="newUnitLecture" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="newUnitLecture"><b>Unidad: <%= object.title %></b> | Nueva Clase</h4>
+			</div>
+			<%= form_tag( { :controller => :courses, :action => :unit }, { :remote => true, :id => 'course_unit_form' } ) do %>
+			<div class="modal-body">
+				<%= number_field_tag "unit_id", object.id, :hidden => true %>
+				<%= text_field_tag "title", nil, :class => "form-control", placeholder: "Escribe el nombre de la nueva clase." %>
+			</div>
+			<div class="modal-footer">
+				<%= submit_tag "Crear Clase", :class => "btn btn-success" %>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+			</div>
+			<% end %>
+		</div>
 	</div>
 </div>
+<!-- end unit modal -->

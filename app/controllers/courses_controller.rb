@@ -43,6 +43,18 @@ class CoursesController < ApplicationController
   	@course = Course.find(params[:id])
   end
 
+  def positions
+    positions = params[:positions]
+    @course = Course.find(params[:id])
+    positions.each_with_index do |id,index|
+      unit=@course.units.find_by_id(id)
+      if unit
+        unit.position=index
+        unit.save
+      end
+    end
+  end
+
   private
 
   def course_params

@@ -1,24 +1,30 @@
-<div id="photo_container">
-  <div class="light_box all_width">
-    <h4>Recorta tu foto:</h4>
-    <div class="under_pressure"></div>
-      <div class="blue_box" style="width:422px;">
-        <%= image_tag @user.photo_url(:large).to_s, id: "crop_user" %>
+<div class="ribbon ribbon-highlight">
+  <ol class="breadcrumb ribbon-inner">
+    <li><a href="/">Home</a></li>
+    <li class="active">Foto de perfil</li>
+  </ol>
+</div>
+<header class="page-header">
+  <h1 class="page-title full-page-title">Recorta tu foto</h1>
+</header>
+<div class="col-md-12">
+  <div id="photo_container" class="col-md-5 col-md-offset-3">
+    <div id="container_image_url">
+      <%= image_tag @user.photo_url(:large).to_s, id: "crop_user" %>
     </div>
-    <div class="white_box" style="width: 116px; margin-left: 5px; ">
-      <div id="mini_photo" class="blue_box">
-        <%= image_tag @user.photo_url(:large).to_s, :id => "preview" %>
-      </div>
-      <%= form_for @user do |f| %>
-          <% %w[x y w h].each do |attribute| %>
-            <%= f.hidden_field "crop_#{attribute}" %>
-          <% end %>
-          <p style="font-size: 9px; text-transform: uppercase; color: #357ebd; text-align: center; width: 100%; position: relative; ">
-            Así se verá tu foto</p>
-          <%= f.submit "Aceptar", :class => 'btn btn-sm btn-primary form-control' %>
-        <% end %>
+  </div>
+  <div class="col-md-3">
+    <%= form_for @user do |f| %>
+    <% %w[x y w h].each do |attribute| %>
+    <%= f.hidden_field "crop_#{attribute}" %>
+    <% end %>
+    <div id="mini_photo">
+      <%= image_tag @user.photo_url(:large).to_s, :id => "preview" %>
     </div>
-  </div>    
+    <h4>Así se verá tu foto</h4>
+    <%= f.submit "Aceptar", :class => 'btn btn-default form-control' %>
+  </div>
+  <% end %>
 </div>
 <script>
 var AvatarCropper,

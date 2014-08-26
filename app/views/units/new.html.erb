@@ -1,2 +1,17 @@
-<h1>Units#new</h1>
-<p>Find me in app/views/units/new.html.erb</p>
+<div class="ribbon ribbon-highlight">
+  <ol class="breadcrumb ribbon-inner">
+    <li><a href="/">Administrador</a></li>
+    <li><a href="3">Museo Amparo</a></li>
+    <li><a href="3">Exposiciones</a></li>
+    <li class="active">Nuevo</li>
+  </ol>
+</div>
+<header class="page-header">
+  <h1 class="page-title full-page-title"><b>Museo Amparo</b> | Nueva exposición</h1>
+</header>
+<div class="col-md-12">
+	<%= form_tag('/units') do -%>
+		<p><%= text_field_tag 'Título de la exposición' %></p>
+  		<%= submit_tag 'Crear', class: "form-control btn btn-default" %>
+	<% end -%>
+</div>

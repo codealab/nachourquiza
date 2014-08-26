@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   post "payments/concept"
   post "courses/unit"
   get "courses/unit"
+  get "courses/positions"
 
   get ':controller(/:action(/:id))(.:format)'
 

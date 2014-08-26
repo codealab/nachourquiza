@@ -1168,12 +1168,13 @@ ul.coverageList {
   font-family: 'Droid Sans', sans-serif;
   font-weight: bold;
 }
-.panel  > .panel-heading .panel-title a {
+/*.panel  > .panel-heading .panel-title a {*/
+.panel  > .panel-heading .panel-title .accordion {
   padding: 0px 10px;
   line-height: 38px;
   display: block;
 }
-.panel  > .panel-heading .panel-title a:hover {
+.panel  > .panel-heading .panel-title .accordion:hover {
   text-decoration: none;
 }
 .panel .panel-body {

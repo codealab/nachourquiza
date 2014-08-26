@@ -1,3 +1,52 @@
 // Place all the styles related to the Courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.panel_unit{
+	width: 100%;
+	margin-bottom: 1px;
+}
+.container_reorder_arrows{
+	width: 30px;
+	height: 100%;
+	background-color: #161f29;
+}
+.reorder_units .icon{
+	margin-right: 5px;
+}
+.container_lecture_actions {
+	color: white;
+	right: 0;
+	height: 100%;
+	background-color: #161f29;
+	padding-left: 8px;
+	padding-right: 8px;
+	border-left: 1px solid white;
+}
+.container_lecture_actions .link_icon{
+	color: white;
+	margin: 8px 0px 8px 0px;
+}
+.container_lecture_actions .link_icon i{
+	margin: 3px;
+}
+.arrow_asc, .arrow_desc{
+	padding: 0;
+	height: 50%;
+	overflow: hidden;
+	width: 30px;
+}
+.panel_unit:first-child .container_reorder_arrows .arrow_asc,
+.panel_unit:last-child .container_reorder_arrows .arrow_desc {
+	display: none;
+}
+.arrow_asc a, .arrow_desc a{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	font-size: 9px;
+	color: #f1c40f!important;
+}
+.arrow_asc a{ line-height: 26px!important; }
+.arrow_desc a{ line-height: 10px !important; }
+.arrow_asc{ top: 0; }
+.arrow_desc{ bottom: 0; }

@@ -516,15 +516,15 @@ a:hover {
   -o-background-clip: padding-box;
   background-clip: padding-box;
 }
-.panel-primary  > .panel-heading .panel-title a {
+.panel-primary  > .panel-heading .panel-title .accordion {
   color: #d9d9d9;
   background-color: #161f29;
 }
-.panel-primary > .unit_new > .panel-title a {
+.panel-primary > .unit_new > .panel-title .accordion {
   background-color: #f1c40f;
   color: black;
 }
-.panel-primary  > .panel-heading .panel-title a:hover {
+.panel-primary  > .panel-heading .panel-title .accordion:hover {
   color: #FFFFFF;
   background-color: #353C45;
 }

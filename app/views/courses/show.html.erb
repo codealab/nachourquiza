@@ -17,17 +17,20 @@
 			</ul>
 		</nav>
 		<div class="col-sm-9 entry-content">
-			<h2 id="info_user">
+			<h2 id="unit_details">
 			Unidades del Curso
-			<button class="btn btn-danger right" onClick="course_actions.reset();">Cancelar</button>
-			<button class="btn btn-success right" onClick="course_actions.save();">Guardar Cambios</button>
-			<button class="btn btn-primary right" onClick="course_actions.reset();">Reordenar</button>
-			<button class="btn btn-default right" data-toggle="modal" data-target="#new_unit_modal">Nueva Unidad</button>
+			<button class="reorder_units btn btn-danger right" onClick='course_actions.disabled_reorder();'>Cancelar</button>
+			<button class="reorder_units btn btn-success right" onClick="course_actions.save();">Guardar Cambios</button>
+			<button class="reorder_units btn btn-primary right" onClick="course_actions.enabled_reorder();" id="reorder_units">
+				<i class="icon-cogs icon"></i>Administrar</button>
+				<button class="reorder_units btn btn-default right" data-toggle="modal" id="new_unit" data-target="#new_unit_modal">
+					<i class="icon-folder-open-alt icon"></i>Nueva Unidad
+				</button>
 			</h2>
 			<div class="row">
-				<div class="panel panel-primary" id="container_units">
-					<% @course.units.each do |unit| %>
-						<%= render 'courses/unit', object: unit %>
+				<div class="panel panel-primary" id="container_units" data-course="<%= @course.id %>">
+					<% @course.units.order("position ASC").each_with_index do |unit, index| %>
+						<%= render 'courses/unit', object: unit, index: index %>
 					<% end %>
 				</div>
 			</div>
@@ -37,12 +40,12 @@
 <!-- modals -->
 <!-- new unit modal -->
 <!-- Modal -->
-<div class="modal fade" id="new_unit_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="new_unit_modal" tabindex="-1" role="dialog" aria-labelledby="newCourseUnit" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-				<h4 class="modal-title" id="myModalLabel">Nueva Unidad</h4>
+				<h4 class="modal-title" id="newCourseUnit"><b>Curso: <%= @course.name %></b> | Nueva Unidad</h4>
 			</div>
 			<%= form_tag( { :controller => :courses, :action => :unit }, { :remote => true, :id => 'course_unit_form' } ) do %>
 				<div class="modal-body">
