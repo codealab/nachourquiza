@@ -1,5 +1,7 @@
 #encoding: UTF-8
 class Unit < ActiveRecord::Base
+
+	attr_accessor :date, :description, :photo
 	
 	before_validation :assign_position, on: [ :create ]
 

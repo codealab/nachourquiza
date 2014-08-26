@@ -54,7 +54,7 @@
 function plugins() {
     $("#user_photo").imagePreview();
     $(".tablesorter").tablesorter();
-    $('#lecture_content').wysihtml5({
+    $('.wysihtml5').wysihtml5({
         "font-styles": false,
         "emphasis": true,
         "lists": true,

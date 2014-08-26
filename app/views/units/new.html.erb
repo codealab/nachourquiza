@@ -9,9 +9,34 @@
 <header class="page-header">
   <h1 class="page-title full-page-title"><b>Museo Amparo</b> | Nueva exposición</h1>
 </header>
-<div class="col-md-12">
-	<%= form_tag('/units') do -%>
-		<p><%= text_field_tag 'Título de la exposición' %></p>
-  		<%= submit_tag 'Crear', class: "form-control btn btn-default" %>
-	<% end -%>
+<div class="col-md-8 col-md-offset-2">
+  <%= simple_form_for @unit do |f| %>
+  <p><%= f.input "title", as: "string", label: "Nombre de la exposición" %>
+  </p>
+  <div id="container_image_url">
+    <img src="/assets/default/user/default.png" id="image_url" alt="">
+  </div>
+  <div id="unit_photo_input" class="btn-default">
+    <p><%= f.input :photo, as: "file", label:"Seleccionar foto de portada" %></p>
+  </div>
+  <div class="col-md-6" style="padding: 0;">
+    <div class="selector_fecha">
+      <%= f.input "date", as: "date", label: "Fecha de inicio", :order => [:day, :month, :year], :include_blank => true, :start_year => Date.today.year, :end_year =>Date.today.year-1, :input_html => { :class => 'date_selector' }  %>
+    </div>
+  </div>
+  <div class="col-md-6" style="padding: 0;">
+    <div class="selector_fecha">
+      <%= f.input "date", as: "date", label: "Fecha final", :order => [:day, :month, :year], :include_blank => true, :start_year => Date.today.year, :end_year =>Date.today.year-1, :input_html => { :class => 'date_selector' }  %>
+    </div>
+  </div>
+  <div class="selector_fecha">
+    <p>
+      <%= check_box_tag 'eula', 'accepted', false %>
+      <%= label_tag :eula, 'Permanente?', :style => "display:inline;" %>
+    </p>
+  </div>
+  <p><%= f.input "description", as: "text", label: "Descripción", :input_html => { :class => "wysihtml5" }  %>
+  </p>
+  <p><%= f.submit "Crear Exposición", class: "form-control btn btn-default" %></p>
+  <% end %>
 </div>
