@@ -23,6 +23,7 @@ gem "jquery-migrate-rails", "~> 1.2.1"
 gem "jquery-ui-rails", "~> 5.0.0"
 
 gem "jcrop-rails-v2"
+gem 'aws-sdk'
 gem "carrierwave"
 
 gem "jbuilder", "~> 2.0"
