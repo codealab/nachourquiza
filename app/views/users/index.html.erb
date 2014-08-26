@@ -1,11 +1,6 @@
 <% provide(:title, 'Todos los Usuarios') %>
 
 <div class="boton_der">
-	<% if current_user.admin? %>
-		<div class="top_buttons">
-			<%= link_factory( :_path => new_user_path, :_text=> 'Nuevo Usuario', :_button=> true, :_class=> 'btn btn-default' ) %>
-		</div>
-	<% end %>
 	<h1>Todos los Usuarios<span class="line"></span></h1>
 </div>
 <div class="all_width blue_box">
