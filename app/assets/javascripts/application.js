@@ -64,7 +64,16 @@ function plugins() {
         "color": true,
         "locale": "es-ES"
     });
-    
+
+    // courses when click on accordeon, load with ajax
+    $(document).on("click",".accordion_unit", function(){
+        var unit = $(this).data('unit');
+        var open = $(this).data("open");
+        if(open==true){
+            $(this).data("open",false);
+            $("#unit_detail_"+unit).load("/courses/accordeon/"+unit+" #accordeon_unit_content");
+        }
+    });
 }
 
 $(document).ready(plugins);

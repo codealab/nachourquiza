@@ -29,6 +29,13 @@ class CoursesController < ApplicationController
     @course.save
   end
 
+  def plan
+    @unit = Unit.find(params[:id])
+    @lecture = Lecture.new( name: params[:name], content: params[:content], video_url: params[:video_url] )
+    @plan = @unit.plans.build({ lecture_id: @lecture.id }) if @lecture.save
+    @unit.save
+  end
+
   def update
   	@course = Course.find(params[:id])
   	if @course.update_attributes(course_params)
@@ -41,6 +48,10 @@ class CoursesController < ApplicationController
 
   def edit
   	@course = Course.find(params[:id])
+  end
+
+  def accordeon
+    @unit = Unit.find(params[:id])
   end
 
   def positions

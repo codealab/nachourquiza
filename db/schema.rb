@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 20140820180057) do
     t.string   "name"
     t.text     "content"
     t.string   "video_url"
-    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

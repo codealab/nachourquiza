@@ -38,7 +38,8 @@ else
   gem "rmagick", :require => "RMagick"
 end
 
-gem "tzinfo-data", platforms: [:mingw, :mswin]
+gem 'tzinfo'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 gem 'bcrypt-ruby', '3.1.2'
 

@@ -1,0 +1,25 @@
+<% lecture = lecture || @lecture %>
+<% object = object || @unit  %>
+<% index = index || object.lectures.count %>
+<tr id="unit_<%= object.id %>_plan_<%= lecture.id %>">
+	<td>
+		<div class="arrow_asc">
+			<a href="javascript:void(0);" class="asc left icon icon-chevron-up" data-id="<%= lecture.id %>" data-position="<%= index %>" onClick="course_actions.reorder(event);"></a>
+		</div>
+		<div class="arrow_desc">
+			<a href="javascript:void(0);" class="left icon icon-chevron-down" data-id="<%= lecture.id %>" data-position="<%= index %>" onClick="course_actions.reorder(event);"></a>
+		</div>
+	</td>
+	<td>
+		<%= link_to lecture.name, lecture_path(lecture) %>
+	</td>
+	<td>
+		<%= lecture.video_url %>
+	</td>
+	<td class="aligncenter">
+		<%= link_to "Editar", edit_lecture_path(lecture), :class => "btn btn-info btn-xs" %>
+	</td>
+	<td class="aligncenter">
+		<%= link_to "Borrar", lecture_path(lecture), :class => "btn btn-danger btn-xs", method: :delete %>
+	</td>
+</tr>
