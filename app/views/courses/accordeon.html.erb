@@ -8,12 +8,12 @@
 		<button href="#" class="link_icon btn btn-default right" data-toggle="modal" data-target="#new_lecture_modal_<%= object.id %>">
 		<i class="icon icon-file-alt"></i> Nueva Clase
 		</button>
-		<table class="table table-hover table-bordered">
+		<table class="table table-hover table-bordered tablesorter">
 			<thead>
 				<tr>
 					<th>Posición</th>
 					<th>Clase</th>
-					<th>Video</th>
+					<th class="aligncenter">Video</th>
 					<th class="aligncenter">Editar</th>
 					<th class="aligncenter">Borrar</th>
 				</tr>
@@ -38,8 +38,8 @@
 					<div id="errors_lectures_unit_<%= object.id %>"></div>
 					<%= number_field_tag "id", object.id, :hidden => true %>
 					<p><%= text_field_tag "name", nil, :class => "form-control", placeholder: "Escribe el nombre de la nueva clase." %></p>
-					<iframe width="100%" height="315" src="//www.youtube.com/embed/uAOR6ib95kQ" frameborder="0" allowfullscreen></iframe>
-					<p><%= text_field_tag "video_url", nil, :class => "form-control", placeholder: "Url de video de clase." %></p>
+					<iframe width="100%" height="315" src="//www.youtube.com/embed/" frameborder="0" allowfullscreen id="video_url_<%= object.id %>"></iframe>
+					<p><%= text_field_tag "video_url", nil, :class => "form-control", placeholder: "Url de video de clase.", :data => { :unit => object.id }, :onkeyup => "course_actions.load_video(event);" %></p>
 					<p><%= text_area_tag "content", nil, :class => "form-control wysihtml5", placeholder: "Contenido de la clase." %></p>
 				</div>
 				<div class="modal-footer">

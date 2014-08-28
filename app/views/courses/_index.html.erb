@@ -16,7 +16,7 @@
 					<td><%= link_to course.name, course_path(course) %></td>
 					<td><%= link_to course.level, course_path(course) %></td>
 					<td><%= link_to "Editar", edit_course_path(course), :class => "btn btn-info btn-xs" %></td>
-					<td><%= link_to "Eliminar", course_path(course) , :class => "btn btn-danger btn-xs" %></td>
+					<td><%= link_to "Eliminar", course_path(course) , :class => "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Estás seguro de borrar este curso?' } %></td>
 				</tr>
 			<% end %>
 		</tbody>

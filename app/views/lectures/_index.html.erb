@@ -18,7 +18,7 @@
 					<td><%= lecture.content %></td>
 					<td><%= lecture.video_url %></td>
 					<td><%= link_to "Editar", edit_lecture_path(lecture), :class => "btn btn-info btn-xs" %></td>
-					<td><%= link_to "Eliminar", lecture_path(lecture) , :class => "btn btn-danger btn-xs", method: :delete %></td>
+					<td><%= link_to "Eliminar", lecture_path(lecture) , :class => "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Estás seguro de borrar esta clase?' } %></td>
 				</tr>
 			<% end %>
 		</tbody>

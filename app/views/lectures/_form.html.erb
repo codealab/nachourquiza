@@ -5,7 +5,6 @@
 			<%= f.input :name, label: "Nombre" %>
 			<%= f.input :content, label: "Contenido de la clase", label_html: { :class => "wysihtml5" } %>
 			<%= f.input	:video_url, label: "Url de video de la clase" %>
-			<p><%= f.input :position, label: "Posición" %></p>
 			<% if params[:action]=='new' %>
 				<%= f.submit "Crear Clase", class: "btn btn-default" %>
 			<% else %>
