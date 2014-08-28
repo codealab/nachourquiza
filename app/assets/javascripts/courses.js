@@ -43,5 +43,39 @@ var course_actions = {
 		}).done(function() {
 			window.location.reload();
 		});
+	},
+	loadUnit: function(event){
+		var $this = $(event.target);
+		var unit = $this.data('unit');
+        var open = $this.data("open");
+        if(open==true){
+            $this.data("open",false);
+            $("#unit_detail_"+unit).load("/courses/accordeon/"+unit+" #accordeon_unit_content");
+            setTimeout(function(){
+            	$("#accordeon_unit_content .tablesorter").tablesorter();
+			    $('#accordeon_unit_content .wysihtml5').wysihtml5({
+			        "font-styles": false,
+			        "emphasis": true,
+			        "lists": true,
+			        "html": false,
+			        "link": true,
+			        "image": false,
+			        "color": true,
+			        "locale": "es-ES"
+			    });
+            },1000);
+        }
+	},
+	load_video: function(event){
+		var $this = $(event.target);
+		var unit = $this.data("unit");
+		var video_id = $this.val();
+		$("#video_url_"+unit).attr("src",("//www.youtube.com/embed/"+video_id));
+	},
+	open_modal_video: function(event){
+		var lecture_name = event.target.dataset.lecture;
+		var video_url = event.target.dataset.video;
+		$("#video_open_modal_name").text(lecture_name);
+		$("#container_open_video_modal").html('<iframe width="100%" height="315" src="//www.youtube.com/embed/'+video_url+'" frameborder="0" allowfullscreen></iframe>');
 	}
 }

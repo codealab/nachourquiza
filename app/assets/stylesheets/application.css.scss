@@ -22,22 +22,14 @@
 .right{ float: right; }
 
 img{ max-width: 100%; }
-/*input, select, textarea{
-	border: 1px solid #444444;
-	background-color: transparent;
-	color: #444444;
-	font-family: inherit;
-	font-size: inherit;
-	line-height: inherit;
-	padding: 5px;
-	width: 100%;
-}
-*/
-input[type="submit"]{
-	width: auto;
-}
-/*input, select{ height: 30px; }*/
+input[type="submit"]{ width: auto; }
 textarea { resize:vertical; }
+
+.pointer_cursor{ cursor: pointer!important; }
+.default_cursor{ cursor: default!important; }
+
+.without_margin{ margin: 0!important; }
+
 #admin_menu .panel {
 	margin-bottom: 0px;
 }

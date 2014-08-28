@@ -15,14 +15,14 @@
 				</div>
 			</div>
 			<div class="container_lecture_actions reorder_units absolute">
-				<%= link_to unit_path(object) , :class => "btn link_icon right btn-xs btn-danger" do %>
+				<%= link_to unit_path(object) , :class => "btn link_icon right btn-xs btn-danger", method: :delete, data: { confirm: 'Estás seguro de borrar este curso?' } do %>
 					<i class="icon icon-remove"></i>Eliminar
 				<% end %>
 				<%= link_to unit_path(object) , :class => "btn link_icon right btn-xs btn-info" do %>
 					<i class="icon icon-eye-open"></i>Ver
 				<% end %>
 			</div>
-			<a class="accordion-toggle panel_title_lecture accordion accordion_unit" data-toggle="collapse" data-parent="#accordion" href="#unit_detail_<%= object.id %>" data-unit="<%= object.id %>" data-open="true">
+			<a class="accordion-toggle panel_title_lecture accordion accordion_unit" data-toggle="collapse" data-parent="#accordion" href="#unit_detail_<%= object.id %>" data-unit="<%= object.id %>" data-open="true" onClick="course_actions.loadUnit(event);">
 				<%= object.title %>
 			</a>
 		</h4>

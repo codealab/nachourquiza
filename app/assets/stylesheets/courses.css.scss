@@ -30,6 +30,7 @@
 	margin: 3px;
 }
 .arrow_asc, .arrow_desc{
+	margin: 0 auto;
 	padding: 0;
 	height: 50%;
 	overflow: hidden;
@@ -59,4 +60,7 @@
 	border-color: white!important;
 	color: white;
 	border-width: 0px 1px 1px 0px;
+}
+.unit_plan td{
+	vertical-align: middle!important;
 }
