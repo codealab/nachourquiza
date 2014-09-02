@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-migrate-min
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.Jcrop
@@ -56,21 +57,31 @@
 //     $.fn.preview = function(){
 //         var opts = $.extend(true, $.preview.defaults, options);
 //     }
-    
+
 // }(jQuery));
 
 function plugins() {
     $("#user_photo").imagePreview();
     $(".tablesorter").tablesorter();
-    $('.wysihtml5').wysihtml5({
-        "font-styles": false,
-        "emphasis": true,
-        "lists": true,
-        "html": false,
-        "link": true,
-        "image": false,
-        "color": true,
-        "locale": "es-ES"
+    $('.wysihtml5').each(function(index, el) {
+        $(this).wysihtml5({
+            "font-styles": false,
+            "emphasis": true,
+            "lists": true,
+            "html": false,
+            "link": true,
+            "image": false,
+            "color": true,
+            "locale": "es-ES"
+        });
+    });
+
+    $.address.init(function(event) {
+        console.log('init state: "' + event.value);
+        $('a:data(remote==true)').address(function() {
+            console.log("entre :v");
+            return $(this).attr('href').replace(location.pathname, '');
+        });
     });
 }
 

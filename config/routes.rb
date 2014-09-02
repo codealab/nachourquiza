@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   resources :attachments
   resources :password_resets
   resources :payments
-  resources :users
   resources :users do
     resources :payments
     resources :spots

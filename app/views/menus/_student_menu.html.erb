@@ -1,0 +1,84 @@
+<nav class="col-sm-3 sidenav">
+	<div class="panel-group" id="user_menu">
+		<div class="panel panel-primary">
+			<!-- init profile -->
+			<div class="panel-heading">
+				<h4 class="panel-title">
+				<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#user_profile">Perfil</a>
+				</h4>
+			</div>
+			<div id="user_profile" class="panel-collapse collapse" style="height: 0px;">
+				<div class="panel-body">
+					<ul class="nav">
+						<li>
+							<% if @user.photo_url.include?('/default/') %>
+							<%= image_tag @user.photo_url.to_s, id: 'image_url' %>
+							<% else %>
+							<%= image_tag @user.photo_url(:thumb).to_s, :class => "profile_thumb" %>
+							<% end %>
+						</li>
+						<li><a href="#"><%= @user.name %></a></li>
+						<li><a href="#"><%= @user.email %></a></li>
+						<li><a href="#info_user">Perfil</a></li>
+						<li><%= link_to "Editar Perfil", edit_user_path(@user) %></li>
+						<li><%= link_to "Cambiar contraseña", edit_password_reset_path(@user) %></li>
+					</ul>
+				</div>
+			</div>
+			<!-- end profile -->
+			<!-- init courses -->
+			<% if !@user.courses.empty? %>
+			<div class="panel-heading">
+				<h4 class="panel-title">
+				<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#users_courses">Cursos</a>
+				</h4>
+			</div>
+			<div id="users_courses" class="panel-collapse collapse" style="height: 0px;">
+				<div class="panel-body">
+					<% @user.courses.each do |course| %>
+					<ul class="nav">
+						<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#course_units">
+							<div class="panel-heading">
+								<h4 class="panel-title"><%= course.name %></h4>
+							</div>
+						</a>
+					</ul>
+					<div id="course_units" class="panel-collapse collapse" style="height: 0px;">
+						<div class="panel-body">
+							<ul class="nav">
+								<% course.units.each do |unit| %>
+								<table class="table table-hover table-bordered">
+									<thead>
+										<tr>
+											<th><span class="glyphicon glyphicon-book"></span></th>
+											<th><%= link_to unit.title, user_unit_path(@user, unit) %></th>
+										</tr>
+									</thead>
+									<tbody>
+										<% unit.lectures.each do |lecture| %>
+										<tr>
+											<td><span class="glyphicon glyphicon-list-alt"></span></td>
+											<td><%= link_to lecture.name, user_lecture_path(@user, lecture) %></td>
+										</tr>
+										<% end %>
+									</tbody>
+								</table>
+								<% end %>
+							</ul>
+						</div>
+					</div>
+					<% end %>
+				</div>
+			</div>
+			<% end %>
+			<!-- end courses -->
+			<!-- init payments -->
+			<div class="panel-heading">
+				<h4 class="panel-title">
+				<%= link_to "Pagos", user_payments_path(@user) %>
+				</h4>
+			</div>
+			<!-- end payments -->
+		</div>
+	</div>
+</nav>
