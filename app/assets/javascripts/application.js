@@ -51,6 +51,14 @@
 
 })(jQuery);
 
+// (function($) {
+
+//     $.fn.preview = function(){
+//         var opts = $.extend(true, $.preview.defaults, options);
+//     }
+    
+// }(jQuery));
+
 function plugins() {
     $("#user_photo").imagePreview();
     $(".tablesorter").tablesorter();

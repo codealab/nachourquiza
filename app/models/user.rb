@@ -11,7 +11,10 @@ class User < ActiveRecord::Base
 
 	has_many :spots, :foreign_key  => "student_id"
 	has_many :courses, through: :spots
+	has_many :units, through: :courses
+	has_many :lectures, through: :units
 	has_many :payments, :dependent => :restrict_with_error
+	has_many :deliveries
 	
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 

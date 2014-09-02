@@ -1,7 +1,8 @@
 <% if @lecture.valid? %>
-	$("#errors_lectures_unit_<%= @unit.id %>").html("");
-	$("#new_lecture_modal_<%= @unit.id %>").modal("hide");
+	$("#errors_lectures_unit_<%= @unit.id %>, #error_explanation").html("");
+	$("#new_lecture_modal").modal("hide");
+	$(".reset_new_unit").val("");
 	$("#container_lectures_unit_<%= @unit.id %>").append("<%= escape_javascript(render('plan')) %>");
 <% else %>
-	$("#errors_lectures_unit_<%= @unit.id %>").html("<%= escape_javascript(render('shared/error_messages', object: @lecture)) %>");
+	$("#errors_lectures_new_unit").html("<%= escape_javascript(render('shared/error_messages', object: @lecture)) %>");
 <% end %>

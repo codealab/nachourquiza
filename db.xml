@@ -106,7 +106,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="460" y="161" name="Plans">
+<table x="426" y="151" name="Plans">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="Units" row="id" />
@@ -128,7 +128,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="661" y="426" name="Lecture">
+<table x="631" y="352" name="Lecture">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -148,18 +148,8 @@
 <part>id</part>
 </key>
 </table>
-<table x="656" y="238" name="Attachments">
+<table x="662" y="147" name="Attachments">
 <row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="delivery_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Deliveries" row="id" />
-</row>
-<row name="file_type" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="file" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="title" null="1" autoincrement="0">
@@ -168,11 +158,25 @@
 <row name="description" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="file_type" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="file" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="delivery_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Deliveries" row="id" />
+</row>
+<row name="lecture_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Lecture" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="667" y="78" name="Deliveries">
+<table x="583" y="27" name="Deliveries">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -184,21 +188,24 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="Users" row="id" />
 </row>
+<row name="Notes" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="185" y="357" name="Payments">
+<table x="149" y="361" name="Payments">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="concept_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Concepts" row="id" />
-</row>
 <row name="user_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="Users" row="id" />
+</row>
+<row name="concept_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Concepts" row="id" />
 </row>
 <row name="quantity" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -213,7 +220,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="26" y="323" name="Concepts">
+<table x="129" y="268" name="Concepts">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
