@@ -1,0 +1,16 @@
+// Place all the styles related to the Attachments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container_image_upload{
+	position: relative;
+	cursor: pointer;
+	border: 1px solid #444444;
+}
+.container_image_upload label{
+	position: relative;
+	left: 15px;
+	top: 2px;
+	color: #A1A1A1;
+	font-weight: normal;
+}

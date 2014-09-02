@@ -22,15 +22,15 @@
 			<button class="reorder_units btn btn-danger right" onClick='course_actions.disabled_reorder();'>Cancelar</button>
 			<button class="reorder_units btn btn-success right" onClick="course_actions.save();">Guardar Cambios</button>
 			<button class="reorder_units btn btn-primary right" onClick="course_actions.enabled_reorder();" id="reorder_units">
-				<i class="icon-cogs icon"></i>Administrar</button>
-				<button class="reorder_units btn btn-default right" data-toggle="modal" id="new_unit" data-target="#new_unit_modal">
-					<i class="icon-folder-open-alt icon"></i>Nueva Unidad
-				</button>
+			<i class="icon-cogs icon"></i>Administrar</button>
+			<button class="reorder_units btn btn-default right" data-toggle="modal" id="new_unit" data-target="#new_unit_modal">
+			<i class="icon-folder-open-alt icon"></i>Nueva Unidad
+			</button>
 			</h2>
 			<div class="row">
 				<div class="panel panel-primary" id="container_units" data-course="<%= @course.id %>">
 					<% @course.units.order("position ASC").each_with_index do |unit, index| %>
-						<%= render 'courses/unit', object: unit, index: index %>
+					<%= render 'courses/unit', object: unit, index: index %>
 					<% end %>
 				</div>
 			</div>
@@ -48,33 +48,60 @@
 				<h4 class="modal-title" id="newCourseUnit"><b>Curso: <%= @course.name %></b> | Nueva Unidad</h4>
 			</div>
 			<%= form_tag( { :controller => :courses, :action => :unit }, { :remote => true, :id => 'course_unit_form' } ) do %>
-				<div class="modal-body">
-					<%= number_field_tag "course_id", @course.id, :hidden => true %>
-					<%= text_field_tag "title", nil, :class => "form-control", placeholder: "Escribe el nombre de la nueva unidad." %>
-				</div>
-				<div class="modal-footer">
-					<%= submit_tag "Crear Unidad", :class => "btn btn-success" %>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-				</div>
+			<div class="modal-body">
+				<%= number_field_tag "course_id", @course.id, :hidden => true %>
+				<%= text_field_tag "title", nil, :class => "form-control", placeholder: "Escribe el nombre de la nueva unidad.", id: "new_unit_field_name" %>
+			</div>
+			<div class="modal-footer">
+				<%= submit_tag "Crear Unidad", :class => "btn btn-success" %>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+			</div>
 			<% end %>
 		</div>
 	</div>
 </div>
-<!-- new unit modal -->
-
+<!-- end new unit modal -->
 <!-- Dynamic Video Modal -->
 <div class="modal fade" id="video_lecture_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-        <h4 class="modal-title" id="myModalLabel">
-        	<b><span id="video_open_modal_name"></span></b> | Video de clase</h4>
-      </div>
-      <div class="modal-body" id="container_open_video_modal">
-      	<!-- render iframe video -->
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+				<h4 class="modal-title" id="myModalLabel">
+				<b><span id="video_open_modal_name"></span></b> | Video de clase</h4>
+			</div>
+			<div class="modal-body" id="container_open_video_modal">
+				<!-- render iframe video -->
+			</div>
+		</div>
+	</div>
 </div>
+<!-- close dynamic video modal  -->
+<!-- add new unit modal -->
+<!-- new unit modal -->
+<div class="modal fade" id="new_lecture_modal" tabindex="-1" role="dialog" aria-labelledby="newUnitLecture" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="newUnitLecture"><b>Unidad: <span id="unit_title"></span></b> | Nueva Clase</h4>
+			</div>
+			<%= form_tag({ :controller => :courses, :action => :plan }, { :remote => true }) do %>
+			<div class="modal-body">
+				<div id="errors_lectures_new_unit"></div>
+				<%= number_field_tag "id", nil, :hidden => true, id: "new_unit_id" %>
+				<p><%= text_field_tag "name", nil, :class => "reset_new_unit form-control", placeholder: "Escribe el nombre de la nueva clase." %></p>
+				<iframe width="100%" height="315" src="//www.youtube.com/embed/" frameborder="0" allowfullscreen id="video_new_unit_url"></iframe>
+				<p><%= text_field_tag "video_url", nil, :class => "reset_new_unit form-control", placeholder: "Url de video de clase.", :onkeyup => "course_actions.load_video(event);" %></p>
+				<p><%= text_area_tag "content", nil, :class => "reset_new_unit form-control wysihtml5", placeholder: "Contenido de la clase." %></p>
+			</div>
+			<div class="modal-footer">
+				<%= submit_tag "Crear Clase", :class => "btn btn-success" %>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+<!-- end unit modal -->
 <!-- modals -->

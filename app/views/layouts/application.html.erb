@@ -4,31 +4,34 @@
 <!--[if IE 8]>      <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
-<head>
-  <title><%= full_title(yield(:title)) %></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Lato:300,400,700,400italic,700italic|Droid+Serif' rel='stylesheet' type='text/css'>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-	<!-- header -->
-	<%= render 'layouts/header' %>
-	<!-- header -->
-	<div id="blog_wrapper">
-		<div id="main" class="container">
-			<div id="flash_messages">
-				<% flash.each do |key, value| %>
-					<%= content_tag(:div, value, class: "alert alert-#{key}") %>
-				<% end %>
+	<!--<![endif]-->
+	<head>
+		<title><%= full_title(yield(:title)) %></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Lato:300,400,700,400italic,700italic|Droid+Serif' rel='stylesheet' type='text/css'>
+			<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+			<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+			<%= csrf_meta_tags %>
+		</head>
+		<body>
+			<!-- header -->
+			<%= render 'layouts/header' %>
+			<!-- header -->
+			<div id="blog_wrapper">
+				<div id="main" class="container">
+					<div id="flash_messages">
+						<% flash.each do |key, value| %>
+						<%= content_tag(:div, value, class: "alert alert-#{key}") %>
+						<% end %>
+					</div>
+					<!-- yield -->
+					<%= yield %>
+					<!-- yield -->
+				</div>
 			</div>
-			<!-- yield -->
-			<%= yield %>
-			<!-- yield -->
-		</div>
-	</div>
-</body>
-</html>
+			<!-- init modal errors notifications -->
+			<%= render "layouts/errors_modals" %>
+			<!-- end modal errors notifications -->
+		</body>
+	</html>

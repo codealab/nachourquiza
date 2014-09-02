@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<%= simple_form_for @attachment do |f| %>
+		<p><%= f.input :title, label: false, placeholder: "Nombre del documento" %></p>
+		<p><%= f.input :description, label: false, input_html: { :class => "wysihtml5" }, placeholder: "Descripción del documento." %></p>
+		<p><%= f.input	:type, as: "select", label: false, prompt: 'Tipo de archivo', collection: (['Imagen','Video','Documento','Otro']) %></p>
+		<div id="container_selected_files" class="relative">
+			<output id="list_selected_files"></output>
+		</div>
+		<div class="btn-default container_image_upload">
+			<label class="file optional" for="user_photo">Seleccionar imagen</label>
+			<%= f.input	:file, label: false,  :input_html => { :onchange => "attachments.handleFileSelect(event);", :multiple => true } %>
+		</div>
+		<br>
+		<p>
+			<% if params[:action]=='new' %>
+				<%= f.submit "Crear Clase", class: "btn btn-default" %>
+			<% else %>
+				<%= f.submit "Guardar Clase", class: "btn btn-default" %>
+			<% end %>
+		</p>
+		<% end %>
+	</div>
+</div>

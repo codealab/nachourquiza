@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20140820180057) do
 
   create_table "attachments", force: true do |t|
     t.integer  "delivery_id"
+    t.integer  "lecture_id"
     t.string   "type"
     t.string   "file"
     t.string   "title"
@@ -41,6 +42,8 @@ ActiveRecord::Schema.define(version: 20140820180057) do
 
   create_table "deliveries", force: true do |t|
     t.integer  "unit_id"
+    t.integer  "user_id"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

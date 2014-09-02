@@ -1,6 +1,6 @@
 $("#new_unit_modal").modal("hide");
 $("#container_units").append("<%= escape_javascript(render('unit')) %>");
-
-$("body, html").animate({scrollTop:$("#panel_unit_<%= @unit.id %>").offset().top},900,function(){
+$("body, html").animate({scrollTop:$("#panel_unit_<%= @unit.position %>").offset().top},900,function(){
+	$("#new_unit_field_name").val("");
 	$('.unit_new').removeClass('unit_new');
 });
