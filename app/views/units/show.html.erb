@@ -1,2 +1,28 @@
-<h1>Units#show</h1>
-<p>Find me in app/views/units/show.html.erb</p>
+<% provide(:title, "Unidad: #{@unit.title}") %>
+<div id="refresh_content">
+	<%= head_title("Unidad: #{@unit.title}") %>
+	<h2>
+	Detalles de la Unidad
+	<%= render "/units/actions" %>
+	</h2>
+	<div class="row">
+		<ul class="nav">
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th><span class="glyphicon glyphicon-book"></span></th>
+						<th><%= link_to @unit.title, user_unit_path(current_user, @unit), remote: true, class: "remote" %></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @unit.lectures.each do |lecture| %>
+					<tr>
+						<td><span class="glyphicon glyphicon-list-alt"></span></td>
+						<td><%= link_to lecture.name, user_lecture_path(current_user, lecture), class: "remote" %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</ul>
+	</div>
+</div>

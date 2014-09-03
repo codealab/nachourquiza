@@ -1,17 +1,18 @@
-<% provide(:title, "Clase #{@lecture.name}") %>
+<% provide(:title, "Clase: #{@lecture.name}") %>
 <div id="refresh_content">
-	<%= head_title("Clase #{@lecture.name}") %>
-	<div class="entry-content">
-		<h2 id="info_user">Detalles de la Clase</h2>
-		<div class="row">
-			<div class="col-sm-6">
-				<div class="video-container">
-					<iframe src="http://youtube.com/v/<%= @lecture.video_url %>" width="800" height="450"></iframe>
-				</div>
+	<%= head_title("Clase: #{@lecture.name}") %>
+	<h2>
+	Detalles de la clase
+	<%= render "/lectures/actions" %>
+	</h2>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="video-container">
+				<iframe src="http://youtube.com/v/<%= @lecture.video_url %>" width="800" height="450"></iframe>
 			</div>
-			<div class="col-sm-6">
-				<%= @lecture.content.html_safe %>
-			</div>
+		</div>
+		<div class="col-sm-6">
+			<%= @lecture.content.html_safe %>
 		</div>
 	</div>
 </div>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :units
   resources :lectures
   resources :attachments
+  resources :deliveries
   resources :password_resets
   resources :payments
   resources :users do

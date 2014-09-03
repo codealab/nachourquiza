@@ -22,7 +22,7 @@
 				<div id="main" class="container">
 					<div id="flash_messages">
 						<% flash.each do |key, value| %>
-						<%= content_tag(:div, value, class: "alert alert-#{key}") %>
+							<%= content_tag(:div, value, class: "alert alert-#{key}") %>
 						<% end %>
 					</div>
 					<div class="content bg-base section">

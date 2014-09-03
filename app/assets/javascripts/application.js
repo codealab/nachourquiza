@@ -77,7 +77,6 @@ function plugins() {
     });
 
     $.address.init(function(event) {
-        // ajax_escape.init(event.value);
         $('.remote').address(function() {
             return $(this).attr('href').replace(location.pathname, '');
         });

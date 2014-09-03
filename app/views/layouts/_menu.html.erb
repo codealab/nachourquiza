@@ -1,9 +1,11 @@
-<% if current_user.admin? %>
-	<%= render "menus/admin_menu" %>
-<% end %>
-<% if current_user.student? %>
-	<%= render "menus/student_menu" %>
-<% end %>
-<% if current_user.teacher? %>
-	<%= render "menus/teacher_menu" %>
+<% if current_user %>
+	<% if current_user.admin? %>
+		<%= render "menus/admin_menu" %>
+	<% end %>
+	<% if current_user.student? %>
+		<%= render "menus/student_menu" %>
+	<% end %>
+	<% if current_user.teacher? %>
+		<%= render "menus/teacher_menu" %>
+	<% end %>
 <% end %>
