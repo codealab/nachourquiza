@@ -77,11 +77,12 @@ function plugins() {
     });
 
     $.address.init(function(event) {
-        console.log('init state: "' + event.value);
-        $('a:data(remote==true)').address(function() {
-            console.log("entre :v");
+        // ajax_escape.init(event.value);
+        $('.remote').address(function() {
             return $(this).attr('href').replace(location.pathname, '');
         });
+    }).change(function(event) {
+        ajax_escape.init(event.value);
     });
 }
 

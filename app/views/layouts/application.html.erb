@@ -25,9 +25,19 @@
 						<%= content_tag(:div, value, class: "alert alert-#{key}") %>
 						<% end %>
 					</div>
-					<!-- yield -->
-					<%= yield %>
-					<!-- yield -->
+					<div class="content bg-base section">
+						<%= render "layouts/breadcrumb" %>
+						<div class="row style-single">
+							<nav class="col-sm-3 sidenav">
+								<%= render "layouts/menu" %>
+							</nav>
+							<!-- yield -->
+							<div class="col-sm-9 entry-content" id="ajax_escape">
+								<%= yield %>
+							</div>
+							<!-- yield -->
+						</div>
+					</div>
 				</div>
 			</div>
 			<!-- init modal errors notifications -->

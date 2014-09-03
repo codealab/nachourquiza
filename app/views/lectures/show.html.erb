@@ -1,33 +1,17 @@
 <% provide(:title, "Clase #{@lecture.name}") %>
-<div class="content bg-base section">
-	<div class="ribbon ribbon-highlight">
-		<ol class="breadcrumb ribbon-inner">
-			<li><a href="#">Home</a></li>
-			<li><a href="#">Features</a></li>
-			<li class="active">Review Archive</li>
-		</ol>
-	</div>
+<div id="refresh_content">
 	<%= head_title("Clase #{@lecture.name}") %>
-	<div class="row style-single">
-		<nav class="col-sm-3 sidenav">
-			<ul class="nav">
-				<li>
-					<a href="#">Link</a>
-				</li>
-			</ul>
-		</nav>
-		<div class="col-sm-9 entry-content">
-			<h2 id="info_user">Detalles de la Clase</h2>
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="video-container">
-						<iframe src="http://youtube.com/v/<%= @lecture.video_url %>" width="800" height="450"></iframe>
-					</div>
+	<div class="entry-content">
+		<h2 id="info_user">Detalles de la Clase</h2>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="video-container">
+					<iframe src="http://youtube.com/v/<%= @lecture.video_url %>" width="800" height="450"></iframe>
 				</div>
-				<div class="col-sm-6">
-					<%= @lecture.content.html_safe %>
-				</div>
+			</div>
+			<div class="col-sm-6">
+				<%= @lecture.content.html_safe %>
 			</div>
 		</div>
 	</div>
-</div>	
+</div>
