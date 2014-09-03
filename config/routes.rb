@@ -1,18 +1,20 @@
 Rails.application.routes.draw do
 
-  root 'static_pages#index'
+  root "static_pages#index"
 
   resources :sessions
 
   resources :courses
   resources :units
   resources :lectures
+  resources :attachments
   resources :password_resets
   resources :payments
-  resources :users
   resources :users do
     resources :payments
     resources :spots
+    resources :units
+    resources :lectures
   end
 
   match '/home',    to: 'static_pages#index',   via: 'get'
