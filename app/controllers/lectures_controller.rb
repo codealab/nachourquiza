@@ -5,8 +5,6 @@ class LecturesController < ApplicationController
   end
 
   def show
-    puts 'xxxxxxxxxxxxxxxxxxxxxxxx'
-    puts 'entre a show'
   	@lecture = Lecture.find(params[:id])
     # render "lectures/show", :layout => false
   end

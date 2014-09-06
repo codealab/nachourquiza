@@ -9,7 +9,7 @@
 		</div>
 		<div class="btn-default container_image_upload">
 			<label class="file optional" for="user_photo">Seleccionar imagen</label>
-			<%= f.input	:file, label: false,  :input_html => { :onchange => "attachments.handleFileSelect(event);", :multiple => true } %>
+			<%= f.input	:file, label: false, :input_html => { :multiple => true } %>
 		</div>
 		<br>
 		<p>

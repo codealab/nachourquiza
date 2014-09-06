@@ -1,0 +1,34 @@
+<%= simple_form_for @delivery do |d| %>
+<%= d.input :unit_id, value: @unit.id %>
+<ul class="nav nav-tabs" id="myTab">
+
+<% index=0 %>
+<%= d.simple_fields_for :attachments do |a| %>
+	<li>
+		<a href="#att_<%= index %>">Doc adjunto <%= index %></a>
+	</li>
+	<% index+=1 %>
+<% end %>
+</ul>
+
+<% index=0 %>
+	<div class="tab-content">
+	<%= d.simple_fields_for :attachments do |a| %>
+		<div class="attachment tab-pane" id="att_<%= index %>">
+			<p><%= a.input :title, label: false, placeholder: "Nombre del documento" %></p>
+			<p><%= a.input :description, label: false, input_html: { :class => "wysihtml5" }, placeholder: "Descripción del documento." %></p>
+			<p><%= a.input :type, as: "select", collection: ([['Selecciona un tipo de archivo',''],['Imagen','Imagen'],['Video','Video'],['Documento','Documento'],['Otro','Otro']]) %></p>
+			<div id="container_selected_files" class="relative">
+				<output id="list_selected_files"></output>
+			</div>
+			<div class="btn-default container_image_upload">
+				<label class="file optional" for="user_photo">Seleccionar imagen</label>
+				<%= a.input :file, label: false, :input_html => { :onchange => "attachments.handleFileSelect(event);", :multiple => true } %>
+			</div>
+			</p>
+		</div>
+	<% index+=1 %>
+	<% end %>
+	</div>
+<%= d.submit "Guardar" %>
+<% end %>

@@ -9,7 +9,6 @@ class CreateAttachments < ActiveRecord::Migration
       t.text :description
 
       t.timestamps
-
     end
   end
 end

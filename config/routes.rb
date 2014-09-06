@@ -7,13 +7,22 @@ Rails.application.routes.draw do
   resources :courses
   resources :units
   resources :lectures
-  resources :attachments
+  
   resources :deliveries
+  resources :attachments
+
+  resources :units do
+    resources :deliveries do
+      resources :attachments
+    end
+  end
+
   resources :password_resets
   resources :payments
   resources :users do
     resources :payments
     resources :spots
+    resources :deliveries
     resources :units
     resources :lectures
   end

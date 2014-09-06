@@ -1,3 +1,4 @@
+#encoding: UTF-8
 class UnitsController < ApplicationController
 
   def index
@@ -6,6 +7,11 @@ class UnitsController < ApplicationController
 
   def show
   	@unit = Unit.find(params[:id])
+    @delivery = current_user.deliveries.build
+    @delivery.unit_id = @unit.id
+    # 3.times { @delivery.attachments.build }
+    @delivery.attachments.build
+    render "units/show", :layout => false
   end
 
   def new
